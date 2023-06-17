@@ -6,6 +6,7 @@
 @section('content')
     <div class="content">
         <h1>Masukkan tabel linguistik</h1>
+        <a href="{{ url('tambah-linguistik')}}" class="btn btn-primary">Tambah</a>
         <table id="example" class="display nowrap" style="width:100%">
             <thead>
                 <tr>

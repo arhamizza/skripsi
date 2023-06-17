@@ -11,14 +11,8 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="{{ $elementActive == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'dashboard_admin') }}">
-                    <i class="nc-icon nc-bank"></i>
-                    <p>{{ __('Dashboard') }}</p>
-                </a>
-            </li>
             <li class="{{ $elementActive == 'tabel' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'tabel_admin') }}">
+                <a href="{{ route('page.index', 'tabel') }}">
                     <i class="nc-icon nc-paper"></i>
                     <p>{{ __('tabel') }}</p>
                 </a>
@@ -37,12 +31,6 @@
                             <a href="{{ route('profile.edit') }}">
                                 <span class="sidebar-mini-icon">{{ __('UP') }}</span>
                                 <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
-                            </a>
-                        </li>
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
-                            <a href="{{ route('page.index', 'usermanagement') }}">
-                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                <span class="sidebar-normal">{{ __(' User Management ') }}</span>
                             </a>
                         </li>
                     </ul>

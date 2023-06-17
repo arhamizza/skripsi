@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TabelController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,29 +18,29 @@ use App\Http\Controllers\TabelController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
+Route::get('/dashboard', [UserController::class, 'index'])->name('user');
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('tambah-linguistik', 'App\Http\Controllers\HomeController@tambah');
-Route::post('insert-linguistik', [App\Http\Controllers\HomeController::class, 'insert']);
-Route::get('edit-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'edit']);
-Route::put('update-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'update']);
-Route::get('hapus-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'destroy']);
+route::middleware(['auth', 'isAdmin'])->group(function () {
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::get('tabel_admin', [TabelController::class, 'index']);
+	Route::get('/dashboard_admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::get('tambah-linguistik', 'App\Http\Controllers\HomeController@tambah');
+	Route::post('insert-linguistik', [App\Http\Controllers\HomeController::class, 'insert']);
+	Route::get('edit-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'edit']);
+	Route::put('update-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'update']);
+	Route::get('hapus-linguistik/{id}', [App\Http\Controllers\HomeController::class, 'destroy']);
+	Route::get('tambah-nilai', [TabelController::class, 'tambah']);
+	Route::post('insert-nilai', [TabelController::class, 'insert']);
+	Route::get('edit-nilai/{id}', [TabelController::class, 'edit']);
+	Route::put('update-nilai/{id}', [TabelController::class, 'update']);
+	Route::get('hapus-nilai/{id}', [TabelController::class, 'destroy']);
+	Route::get('usermanagement', [ProfileController::class, 'index']);
 
-Route::get('tabel',[TabelController::class, 'index']);
-Route::get('tambah-nilai',[TabelController::class, 'tambah']);
-Route::post('insert-nilai',[TabelController::class, 'insert']);
-Route::get('edit-nilai/{id}', [TabelController::class, 'edit']);
-Route::put('update-nilai/{id}', [TabelController::class, 'update']);
-Route::get('hapus-nilai/{id}', [TabelController::class, 'destroy']);
-
+});
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Auth::routes();
-
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);

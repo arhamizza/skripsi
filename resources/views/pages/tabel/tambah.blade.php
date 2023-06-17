@@ -20,8 +20,8 @@
                                     <label for="position-option">Pilih Nama Linguistik</label>
                                     <select class="form-select" name="id_linguistik">
                                         <option value>Pilih Nama Linguistik</option>
-                                        @foreach ($tabel as $item)
-                                            <option value="{{ $item->id_linguistik }}" class="bold">{{ $item->asd->nama }}</option>
+                                        @foreach ($tabel2 as $item)
+                                            <option value="{{ $item->id }}" class="bold">{{ $item->nama }}</option>
                                         @endforeach
                                     </select>
                                  </div>

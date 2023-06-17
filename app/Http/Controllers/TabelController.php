@@ -36,8 +36,9 @@ class TabelController extends Controller
     
     public function tambah()
     {
+        $tabel2 = datatable::all();
         $tabel = tabel::all();
-        return view('pages.tabel.tambah', compact('tabel'));
+        return view('pages.tabel.tambah', compact('tabel','tabel2'));
     }
 
     public function insert(Request $request)

@@ -1,7 +1,9 @@
 <div class="wrapper">
-
-    @include('layouts.navbars.auth')
-
+    @if (Auth::check() && Auth::user()->is_admin == 1)
+        @include('layouts.navbars.auth')
+    @else
+        @include('layouts.navbars.auth2')
+    @endif
     <div class="main-panel">
         @include('layouts.navbars.navs.auth')
         @yield('content')

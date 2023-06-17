@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\Datatable;
+use App\Models\tabel;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,8 +16,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
+    public function index() 
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        $tabel = tabel::all();
+        return view('pages.tabel.index', compact('tabel'));
+        // dd($tabel);
     }
 }
