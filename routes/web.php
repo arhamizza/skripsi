@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
 	return view('welcome');
 });
-Route::get('/dashboard', [UserController::class, 'index'])->name('user');
+Route::get('/tabel', [UserController::class, 'index'])->name('user');
 
 route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

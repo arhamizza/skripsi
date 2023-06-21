@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('tabel', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_linguistik');
-            $table->integer('A');
-            $table->integer('B');
-            $table->integer('C');
-            $table->integer('D');
+            $table->float('A');
+            $table->float('B');
+            $table->float('C');
+            $table->float('D');
             $table->timestamps();
         });
     }

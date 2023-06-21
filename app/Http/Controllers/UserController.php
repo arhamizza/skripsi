@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index() 
     {
         $tabel = tabel::all();
-        return view('pages.tabel.index', compact('tabel'));
+        return view('users.index', compact('tabel'));
         // dd($tabel);
     }
 }

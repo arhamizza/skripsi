@@ -1,5 +1,5 @@
 <div class="wrapper">
-    @if (Auth::check() && Auth::user()->is_admin == 1)
+    @if (Auth::check() && Auth::user()->is_active == 1)
         @include('layouts.navbars.auth')
     @else
         @include('layouts.navbars.auth2')

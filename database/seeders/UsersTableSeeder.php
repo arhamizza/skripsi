@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
   
-class UserSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,9 +17,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            "name" => "One",
-            "email" => "one@gmail.com",
-            "password" => Hash::make("123456"),
+            "name" => "Admin",
+            "email" => "admin@admin.com",
+            "password" => Hash::make("12345678"),
             "is_active" => 1
         ]);
   

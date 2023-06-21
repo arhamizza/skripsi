@@ -1,30 +1,42 @@
 @extends('layouts.app2', [
     'class' => '',
-    'elementActive' => 'dashboard',
+    'elementActive' => 'tabel',
 ])
 
 @section('content')
     <div class="content">
-        <h1>Masukkan tabel linguistik</h1>
-        <a href="{{ url('tambah-linguistik')}}" class="btn btn-primary">Tambah</a>
+        <h1>Masukkan tabel liguistik</h1>
         <table id="example" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>                    
-                    <th>Name</th>
-                    <th>Gambar visualisasi HFLTS</th>
+                    <th>Nama Liguistik</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <center>
+                        <th>Image</th>
+                    </center>
+
                 </tr>
             </thead>
                 <tbody>
                     <?php 
                         $id = 0;
                     ?>
-                    @foreach ($data as $datatables)
+                    @foreach ($tabel as $luguistik)
                         <tr>
                             <td>{{ $id++ +1 }}</td>
-                            <td>{{$datatables->nama}}</td>
-                            <td>
-                                <img src="{{ asset('paper/img/' . $datatables->visualisasi) }}" class="figure-img img-fluid rounded" style="width:450px;height:300px;">
+                            <td>{{$luguistik->asd->nama}}</td>
+                            <td>{{$luguistik->A}}</td>
+                            <td>{{$luguistik->B}}</td>
+                            <td>{{$luguistik->C}}</td>
+                            <td>{{$luguistik->D}}</td>
+                            <td><center>
+                                <img src="{{ asset('paper/img/' . $luguistik->asd->visualisasi) }}" class="figure-img img-fluid rounded" style="width:250px;height:200px;">
+
+                            </center>
                             </td>
                         </tr>
                     @endforeach
