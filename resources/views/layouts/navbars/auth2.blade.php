@@ -14,7 +14,19 @@
             <li class="{{ $elementActive == 'tabel' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'tabel') }}">
                     <i class="nc-icon nc-paper"></i>
-                    <p>{{ __('tabel') }}</p>
+                    <p>{{ __('Tabel') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'alternatif' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'alternatif') }}">
+                    <i class="nc-icon nc-hat-3"></i>
+                    <p>{{ __('Alternatif') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'kriteria' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'kriteria') }}">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>{{ __('Kriteria') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">

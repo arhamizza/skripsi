@@ -50,7 +50,7 @@ class TabelController extends Controller
         $tabel->C = $request->input('C');
         $tabel->D = $request->input('D');
         $tabel->save();
-        return redirect('tabel')->with('status', "data Berhasil Ditambahkan!");
+        return redirect('tabel_admin')->with('status', "data Berhasil Ditambahkan!");
     }
 
     public function edit($id)
@@ -69,14 +69,14 @@ class TabelController extends Controller
         $tabel->C = $request->input('C');
         $tabel->D = $request->input('D');
         $tabel->update();
-        return redirect('tabel')->with('status',"data telah di update!");
+        return redirect('tabel_admin')->with('status',"data telah di update!");
     }
 
     public function destroy($id)
     {
         $data = tabel::find($id);
         $data->delete();
-        return redirect('tabel')->with('status',"data berhasil dihapus!");
+        return redirect('tabel_admin')->with('status',"data berhasil dihapus!");
     }
     use AuthorizesRequests, ValidatesRequests;
 }

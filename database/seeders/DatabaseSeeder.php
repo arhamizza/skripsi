@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             DashboardSeeder::class,
             NilaiSeeder::class,
+            AlternatifSeeder::class,
+            KriteriaSeeder::class,
         ]);
         // datatable::Factory()->count(10)->create();
     }

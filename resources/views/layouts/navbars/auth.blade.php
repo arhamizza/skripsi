@@ -23,6 +23,18 @@
                     <p>{{ __('tabel') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'alternatif' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'alternatif_admin') }}">
+                    <i class="nc-icon nc-hat-3"></i>
+                    <p>{{ __('Alternatif') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'kriteria' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'kriteria_admin') }}">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>{{ __('Kriteria') }}</p>
+                </a>
+            </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
@@ -39,7 +51,7 @@
                                 <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
                             </a>
                         </li>
-                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                        <li class="{{ $elementActive == 'usermanagement' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'usermanagement') }}">
                                 <span class="sidebar-mini-icon">{{ __('U') }}</span>
                                 <span class="sidebar-normal">{{ __(' User Management ') }}</span>

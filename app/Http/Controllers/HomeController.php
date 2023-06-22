@@ -32,6 +32,12 @@ class HomeController extends Controller
         return view('pages.dashboard.dashboard', compact('data'));
 
     }
+
+    public function index2() {
+        $data = datatable::all();
+        return view('pages.dashboard.welcome', compact('data'));
+
+    }
     
     public function tambah()
     {
@@ -51,7 +57,7 @@ class HomeController extends Controller
 
         $data->nama = $request->input('nama');
         $data->save();
-        return redirect('/dashboard')->with('status', "data Berhasil Ditambahkan!");
+        return redirect('/home')->with('status', "data Berhasil Ditambahkan!");
     }
 
     public function edit($id)
@@ -78,7 +84,7 @@ class HomeController extends Controller
         }
         $data->nama = $request->input('nama');
         $data->update();
-        return redirect('/dashboard')->with('status',"data telah di update!");
+        return redirect('/home')->with('status',"data telah di update!");
     }
 
     public function destroy($id)
@@ -93,7 +99,7 @@ class HomeController extends Controller
             }
         }
         $data->delete();
-        return redirect('/dashboard')->with('status',"data berhasil dihapus!");
+        return redirect('/home')->with('status',"data berhasil dihapus!");
     }
     use AuthorizesRequests, ValidatesRequests;
 }

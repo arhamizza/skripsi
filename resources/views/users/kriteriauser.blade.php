@@ -1,43 +1,26 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'tabel',
+    'elementActive' => 'kriteria',
 ])
 
 @section('content')
     <div class="content">
-        <h1>Masukkan tabel liguistik</h1>
+        <h1>Tabel kriteria</h1>
         <table id="example" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>                    
-                    <th>Nama Liguistik</th>
-                    <th>A</th>
-                    <th>B</th>
-                    <th>C</th>
-                    <th>D</th>
-                    <center>
-                        <th>Image</th>
-                    </center>
-
+                    <th>Nama kriteria</th>
                 </tr>
             </thead>
                 <tbody>
                     <?php 
                         $id = 0;
                     ?>
-                    @foreach ($tabel as $luguistik)
+                    @foreach ($kriteria as $item)
                         <tr>
                             <td>{{ $id++ +1 }}</td>
-                            <td>{{$luguistik->asd->nama}}</td>
-                            <td>{{$luguistik->A}}</td>
-                            <td>{{$luguistik->B}}</td>
-                            <td>{{$luguistik->C}}</td>
-                            <td>{{$luguistik->D}}</td>
-                            <td><center>
-                                <img src="{{ asset('paper/img/' . $luguistik->asd->visualisasi) }}" class="figure-img img-fluid rounded" style="width:250px;height:200px;">
-
-                            </center>
-                            </td>
+                            <td>{{$item->nama_kriteria}}</td>
                         </tr>
                     @endforeach
                 </tbody>
