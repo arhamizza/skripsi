@@ -27,14 +27,14 @@ class KriteriaController extends Controller
      public function index() {
 
         $kriteria = kriteria::all();
-        return view('pages.kriteria.index', compact('kriteria'));
+        return view('admin.kriteria.index', compact('kriteria'));
         // dd($kriteria);
     }
     
     public function tambah()
     {
         $kriteria = kriteria::all();
-        return view('pages.kriteria.tambah', compact('kriteria'));
+        return view('admin.kriteria.tambah', compact('kriteria'));
     }
 
     public function insert(Request $request)
@@ -48,7 +48,7 @@ class KriteriaController extends Controller
     public function edit($id)
     {
         $kriteria = kriteria::find($id);
-        return view('pages.kriteria.edit', compact('kriteria'));
+        return view('admin.kriteria.edit', compact('kriteria'));
     }
 
     public function update(Request $request, $id)

@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
             NilaiSeeder::class,
             AlternatifSeeder::class,
             KriteriaSeeder::class,
+            GuruSeeder::class,
+            KelasSeeder::class,
+            SiswaSeeder::class,
+            TransaksiSeeder::class,
+            TransaksiGuruSeeder::class,
         ]);
         // datatable::Factory()->count(10)->create();
     }

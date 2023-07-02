@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('admin.profile');
+        return view('profile.profile');
     }
 
     /**
@@ -49,6 +49,6 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('admin.user', compact('user'));
+        return view('profile.user', compact('user'));
     }
 }

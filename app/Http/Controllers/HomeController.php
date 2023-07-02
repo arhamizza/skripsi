@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternatif;
 use App\Models\datatable;
+use App\Models\Kriteria;
+use App\Models\tabel;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -29,19 +32,22 @@ class HomeController extends Controller
      public function index() {
 
         $data = datatable::all();
-        return view('pages.dashboard.dashboard', compact('data'));
+        return view('admin.dashboard.dashboard', compact('data'));
 
     }
 
     public function index2() {
         $data = datatable::all();
-        return view('pages.dashboard.welcome', compact('data'));
+        $tabel = tabel::all();
+        $kriteria = Kriteria::all();
+        $alternatif = Alternatif::all();
+        return view('admin.dashboard.welcome', compact('data','tabel','kriteria','alternatif'));
 
     }
     
     public function tambah()
     {
-        return view('pages.dashboard.tambah');
+        return view('admin.dashboard.tambah');
     }
 
     public function insert(Request $request)
@@ -63,7 +69,7 @@ class HomeController extends Controller
     public function edit($id)
     {
         $data = datatable::find($id);
-        return view('pages.dashboard.edit', compact('data'));
+        return view('admin.dashboard.edit', compact('data'));
     }
 
     public function update(Request $request, $id)

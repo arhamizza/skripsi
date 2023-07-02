@@ -1,181 +1,84 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'usermanagement',
+    'elementActive' => 'user',
 ])
 
 @section('content')
-    <!-- content -->
     <div class="content">
-        <!--/.row-v class="col-lg-12">
-                    <h1 class="page-header">List users</h1>
-                </div>
-            </div> --}}
-            <!--/.row-->
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+        @if (session('password_status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('password_status') }}
+            </div>
+        @endif
+        <div class="container-fluid mt--7">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <h3 class="mb-0">Users</h3>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <a href="#" class="btn btn-sm btn-primary">Add user</a>
+                                </div>
+                            </div>
+                        </div>
 
-        @if ($message = Session::get('success'))
-            <div class="alert bg-success" role="alert">
-                <em class="fa fa-lg fa-check">&nbsp;</em>
-                {{ $message }}
-            </div>
-        @endif
-        @if ($message = Session::get('error'))
-            <div class="alert bg-danger" role="alert">
-                <em class="fa fa-lg fa-check">&nbsp;</em>
-                {{ $message }}
-            </div>
-        @endif
-        <div class="content">
-            <h1>User Management</h1>
-                  <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#Addusers">
-                        Add users
-                    </button>
-                        <table id="example" class="display nowrap" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Email </th>
-                                    <th>role</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $no = 1; @endphp
-                                @foreach ($users as $user)
+                        <div class="col-12">
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
                                     <tr>
-                                        <td>{{ $no }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->is_active }}</td>
-                                        <td>
-                                            <button class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#Edituser-{{ $user->id }}">
-                                                <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                                            </button>
-                                            <button 
-                                                        class="btn btn-danger btn-sm" 
-                                                        data-toggle="modal"
-                                                        data-target="#Deleteuser-{{$user->id}}">
-                                                        <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                                                    </button>
-                                        </td>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Creation Date</th>
+                                        <th scope="col"></th>
                                     </tr>
-                                    @php $no++; @endphp
-                                @endforeach
-                            </tbody>
-                        </table>
-        </div>
-    </div><!-- /.panel-->
-    <!--/.main-->
+                                </thead>
+                                <tbody>
+                                    {{-- <tr>
+                                        
+                                        <td>Admin Admin</td>
+                                        <td>
+                                            <a href="mailto:admin@paper.com">admin@paper.com</a>
+                                        </td>
+                                        <td>25/02/2020 11:37</td>
+                                    </tr> --}}
+                                    <?php
+                                    $id = 0;
+                                    ?>
+                                    @foreach ($user as $user)
+                                        <tr>
+                                            <td>{{ $id++ + 1 }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer py-4">
+                            <nav class="d-flex justify-content-end" aria-label="...">
 
-    <!-- The Modal -->
-    <div class="modal" id="Addusers">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
+                            </nav>
+                        </div>
                     </div>
-                @endif
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Add New user</h4>
                 </div>
-
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form role="form" action="{{ url('usermanagement_add') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input class="form-control" name="name" placeholder="user Name">
-                        </div>
-                        <div class="form-group">
-                            <label>No email</label>
-                            <input class="form-control" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input class="form-control" name="password" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label>is active</label>
-                            <input class="form-control" name="is_active" placeholder="Role">
-                        </div>
-
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-                </form>
             </div>
+            {{-- <div class="alert alert-danger alert-dismissible fade show">
+                <span>
+                    <b> </b> This is a PRO feature!</span>
+            </div> --}}
         </div>
     </div>
-
-    @foreach ($users as $vd)
-        <div class="modal" id="Edituser-{{ $vd->id }}">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Edit user</h4>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <form role="form" action="{{ url('usermanagement_update/' . $vd->id) }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label>Nama Cabang</label>
-                                <input class="form-control" value="{{ $vd->name }}" name="name"
-                                    placeholder="user Name">
-                            </div>
-                            <div class="form-group">
-                                <label>No WA</label>
-                                <input class="form-control" name="email" value="{{ $vd->email }}"
-                                    placeholder="Account Number">
-                            </div>
-
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info">Update</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="Deleteuser-{{ $vd->id }}">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Delete user</h4>
-
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <h5>Apakah Kamu Yakin Delete?</h5>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <a href="{{ url('usermanagement_delete/' . $vd->id) }}" class="btn btn-info">Yes</a>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
 @endsection

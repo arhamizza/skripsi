@@ -1,11 +1,11 @@
 <div class="sidebar" data-color="black" data-active-color="success">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="{{ route('page.index', '') }}" class="simple-text logo-mini">
             <div class="logo-image-small">
                 <img src="{{ asset('paper') }}/img/logo-small.png">
             </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{{ route('page.index', '') }}" class="simple-text logo-normal">
             {{ __('Creative Tim') }}
         </a>
     </div>
@@ -27,6 +27,24 @@
                 <a href="{{ route('page.index', 'kriteria') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
                     <p>{{ __('Kriteria') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'guru' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'guru') }}">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>{{ __('Guru') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'kelas' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'kelas') }}">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>{{ __('Kelas') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'siswa' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'siswa') }}">
+                    <i class="nc-icon nc-book-bookmark"></i>
+                    <p>{{ __('Siswa') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">

@@ -17,8 +17,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Capacity</p>
-                                <p class="card-title">150GB
+                                <p class="card-category">Gambar IVHF</p>
+                                <p class="card-title">{{ $data->count() }}
                                     <p>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-refresh"></i> Update Now
+                        <a href="{{ route('page.index', 'dashboard_admin') }}" class="fa fa-refresh">&nbsp;&nbsp;Klik Now</a> 
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Revenue</p>
-                                <p class="card-title">$ 1,345
+                                <p class="card-category">Data IVIHF</p>
+                                <p class="card-title">{{ $tabel->count() }}
                                     <p>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-calendar-o"></i> Last day
+                        <a href="{{ route('page.index', 'tabel_admin') }}" class="fa fa-calendar-o">&nbsp;&nbsp;Klik Now</a> 
                     </div>
                 </div>
             </div>
@@ -69,8 +69,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Errors</p>
-                                <p class="card-title">23
+                                <p class="card-category">Data Alternatif</p>
+                                <p class="card-title">{{ $alternatif->count() }}
                                     <p>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-clock-o"></i> In the last hour
+                        <a href="{{ route('page.index', 'alternatif_admin') }}" class="fa fa-clock-o">&nbsp;&nbsp;Klik Now</a>
                     </div>
                 </div>
             </div>
@@ -95,8 +95,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Followers</p>
-                                <p class="card-title">+45K
+                                <p class="card-category">Data Kriteria</p>
+                                <p class="card-title">{{ $kriteria->count() }}
                                     <p>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <i class="fa fa-refresh"></i> Update now
+                        <a href="{{ route('page.index', 'kriteria_admin') }}" class="fa fa-refresh">&nbsp;&nbsp;Klik Now</a> 
                     </div>
                     
                 </div>

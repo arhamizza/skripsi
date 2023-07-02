@@ -29,7 +29,7 @@ class UserManagementController extends Controller
     {
         $users = user::all();
         Session::put('menu','user');
-        return view('profile.user',compact('users'));
+        return view('usermanagement.user',compact('users'));
     }
 
     public function create(Request $request)

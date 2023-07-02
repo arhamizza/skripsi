@@ -30,7 +30,7 @@ class TabelController extends Controller
      public function index() {
 
         $tabel = tabel::all();
-        return view('pages.tabel.index', compact('tabel'));
+        return view('admin.tabel.index', compact('tabel'));
         // dd($tabel);
     }
     
@@ -38,7 +38,7 @@ class TabelController extends Controller
     {
         $tabel2 = datatable::all();
         $tabel = tabel::all();
-        return view('pages.tabel.tambah', compact('tabel','tabel2'));
+        return view('admin.tabel.tambah', compact('tabel','tabel2'));
     }
 
     public function insert(Request $request)
@@ -57,7 +57,7 @@ class TabelController extends Controller
     {
         $tabel2 = datatable::all();
         $tabel = tabel::find($id);
-        return view('pages.tabel.edit', compact('tabel','tabel2'));
+        return view('admin.tabel.edit', compact('tabel','tabel2'));
     }
 
     public function update(Request $request, $id)

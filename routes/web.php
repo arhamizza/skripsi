@@ -6,6 +6,11 @@ use App\Http\Controllers\TabelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiGuruController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\UserController;
 
@@ -26,6 +31,9 @@ Route::get('/', function () {
 Route::get('/tabel', [UserController::class, 'usertabel'])->name('user');
 Route::get('/alternatif', [UserController::class, 'useralternatif']);
 Route::get('/kriteria', [UserController::class, 'userkriteria']);
+Route::get('/guru', [UserController::class, 'userkriteria']);
+Route::get('/kelas', [UserController::class, 'userkriteria']);
+Route::get('/siswa', [UserController::class, 'userkriteria']);
 
 route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home');
@@ -62,6 +70,31 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/usermanagement_delete/{id}', [UserManagementController::class, 'delete']);
 	Route::post('/usermanagement_add', [UserManagementController::class, 'create']);
 	Route::post('/usermanagement_update/{id}', [UserManagementController::class, 'update']);
+	// ------------------------ guru
+	Route::get('/guru_admin', [GuruController::class, 'index']);
+	Route::get('/guru_delete/{id}', [GuruController::class, 'delete']);
+	Route::post('/guru_add', [GuruController::class, 'create']);
+	Route::post('/guru_update/{id}', [GuruController::class, 'update']);
+	// ------------------------ Siswa
+	Route::get('/siswa_admin', [SiswaController::class, 'index']);
+	Route::get('/siswa_delete/{id}', [SiswaController::class, 'delete']);
+	Route::post('/siswa_add', [SiswaController::class, 'create']);
+	Route::post('/siswa_update/{id}', [SiswaController::class, 'update']);
+	// ------------------------ kelas
+	Route::get('/kelas_admin', [KelasController::class, 'index']);
+	Route::get('/kelas_delete/{id}', [KelasController::class, 'delete']);
+	Route::post('/kelas_add', [KelasController::class, 'create']);
+	Route::post('/kelas_update/{id}', [KelasController::class, 'update']);
+	// ------------------------ Transaksi
+	Route::get('/transaksi_admin', [TransaksiController::class, 'index']);
+	Route::get('/transaksi_delete/{id}', [TransaksiController::class, 'delete']);
+	Route::post('/transaksi_add', [TransaksiController::class, 'create']);
+	Route::post('/transaksi_update/{id}', [TransaksiController::class, 'update']);
+	// ------------------------ Transaksi Guru
+	Route::get('/transaksiguru_admin', [TransaksiGuruController::class, 'index']);
+	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);
+	Route::post('/transaksiguru_add', [TransaksiGuruController::class, 'create']);
+	Route::post('/transaksiguru_update/{id}', [TransaksiGuruController::class, 'update']);
 });
 Auth::routes();
 

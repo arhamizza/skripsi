@@ -30,14 +30,14 @@ class AlternatifController extends Controller
      public function index() {
 
         $alternatif = alternatif::all();
-        return view('pages.alternatif.index', compact('alternatif'));
+        return view('admin.alternatif.index', compact('alternatif'));
         // dd($alternatif);
     }
     
     public function tambah()
     {
         $alternatif = alternatif::all();
-        return view('pages.alternatif.tambah', compact('alternatif'));
+        return view('admin.alternatif.tambah', compact('alternatif'));
     }
 
     public function insert(Request $request)
@@ -51,7 +51,7 @@ class AlternatifController extends Controller
     public function edit($id)
     {
         $alternatif = alternatif::find($id);
-        return view('pages.alternatif.edit', compact('alternatif'));
+        return view('admin.alternatif.edit', compact('alternatif'));
     }
 
     public function update(Request $request, $id)
