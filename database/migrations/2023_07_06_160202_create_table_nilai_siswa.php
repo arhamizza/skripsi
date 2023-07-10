@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi_gurus', function (Blueprint $table) {
+        Schema::create('nilai_siswas', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_guru');
-            $table->integer('id_transaksi');
-            $table->integer('id_nilai');
+            $table->integer('id_siswa')->nullable();
+            $table->integer('Nilai_linguistik');
+            // $table->foreign('id_guru')->references('id')->on('gurus');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi_gurus');
+        Schema::dropIfExists('nilai_siswas');
     }
 };

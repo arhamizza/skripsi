@@ -16,22 +16,27 @@ class TransaksiGuruSeeder extends Seeder
         ModelsTransaksiGuru::create([
             "id_guru" => "1",
             "id_transaksi" => "1",
+            "id_nilai" => "1",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
+            "id_nilai" => "2",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "3",
             "id_transaksi" => "1",
+            "id_nilai" => "3",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "1",
             "id_transaksi" => "2",
+            "id_nilai" => "4",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "2",
             "id_transaksi" => "2",
+            "id_nilai" => "5",
        ]);
     }
 }

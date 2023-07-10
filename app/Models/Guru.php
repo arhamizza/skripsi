@@ -16,4 +16,5 @@ class Guru extends Model
     {
         return $this->belongsToMany(Transaksi::class,'transaksi_gurus','id_guru','id_transaksi');
     }
+    
 }

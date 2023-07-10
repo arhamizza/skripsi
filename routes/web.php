@@ -31,9 +31,14 @@ Route::get('/', function () {
 Route::get('/tabel', [UserController::class, 'usertabel'])->name('user');
 Route::get('/alternatif', [UserController::class, 'useralternatif']);
 Route::get('/kriteria', [UserController::class, 'userkriteria']);
-Route::get('/guru', [UserController::class, 'userkriteria']);
-Route::get('/kelas', [UserController::class, 'userkriteria']);
-Route::get('/siswa', [UserController::class, 'userkriteria']);
+Route::get('/kelas', [UserController::class, 'userkelas']);
+Route::get('/siswa', [UserController::class, 'usersiswa']);
+
+route::middleware(['auth', 'guru'])->group(function () {
+	Route::get('/transaksiguru_guru', [UserController::class, 'transaksi']);
+	Route::get('transaksiguru_guru/{id_guru}', [UserController::class, 'nilai_user']);
+	Route::post('/transaksiuser_add_nilai/', [UserController::class, 'create_nilai']);
+});
 
 route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home');
@@ -90,10 +95,17 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/transaksi_delete/{id}', [TransaksiController::class, 'delete']);
 	Route::post('/transaksi_add', [TransaksiController::class, 'create']);
 	Route::post('/transaksi_update/{id}', [TransaksiController::class, 'update']);
+
+	// Route::get('transaksiguru_admin/{id_guru}/{id}', [TransaksiController::class, 'nilai2_admin']);
 	// ------------------------ Transaksi Guru
 	Route::get('/transaksiguru_admin', [TransaksiGuruController::class, 'index']);
 	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);
 	Route::post('/transaksiguru_add', [TransaksiGuruController::class, 'create']);
+	Route::post('/transaksiguru_update/{id}', [TransaksiGuruController::class, 'update']);
+	// ------------------------ Transaksi Guru
+	Route::get('transaksiguru_admin/{id_guru}', [TransaksiController::class, 'nilai_admin']);
+	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);
+	Route::post('/transaksiguru_add_nilai/', [TransaksiGuruController::class, 'create_nilai']);
 	Route::post('/transaksiguru_update/{id}', [TransaksiGuruController::class, 'update']);
 });
 Auth::routes();

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_kelas');
+            $table->integer('kode');
             $table->date('tanggal');
             $table->string('nama');
             $table->text('keterangan');
+            $table->integer('id_kelas');
             $table->timestamps();
         });
     }

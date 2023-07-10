@@ -8,6 +8,8 @@ use App\Models\Siswa;
 use App\Models\Transaksi;
 use App\Models\TransaksiGuru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,16 +23,19 @@ class TransaksiGuruController extends Controller
         $kelas = Kelas::all();
         $siswa = Siswa::all();
         $transaksi = Transaksi::all();
-        $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
+        $transaksigurus = TransaksiGuru::orderBy('id_transaksi');
+        $tran = TransaksiGuru::distinct('id_guru')->get(['id_guru']);
+        // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
-        return view('admin.Transaksi.transaksiguru',compact('gurus','transaksi','kelas','transaksigurus'));
+        // dd($tran);
+        return view('admin.Transaksi.transaksiguru',compact('gurus','transaksi','kelas','transaksigurus','tran'));
     }
 
     public function create(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'id_guru' => 'required',
+            'id' => 'required|unique:gurus',
             'id_transaksi' => 'required',
         ]);
  
@@ -40,6 +45,38 @@ class TransaksiGuruController extends Controller
         $transaksi = new transaksiguru;
         $transaksi->id_guru = $request->id_guru;
         $transaksi->id_transaksi = $request->id_transaksi;
+        $transaksi->id_siswa = $request->null;
+        $transaksi->Nilai_linguistik = $request->null;
+        $transaksi->save();
+        return redirect('transaksiguru_admin')
+        ->with('success','New data transaksi successfully added!');
+    }
+    public function create_nilai(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'id_transaksi' => 'required',
+            'id_siswa' => 'required',
+            'id_guru' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()->with('error', $validator->messages()->all()[0])->withInput();
+        }
+        $transaksi = new transaksiguru;
+        $transaksi->id_guru = $request->id_guru;
+        $transaksi->id_transaksi = $request->id_transaksi;
+        if($request->filled('id_siswa')) {
+            $transaksi->id_siswa = $request->id_siswa;
+        } else {
+            $transaksi->id_siswa = $request->null;
+        }
+        if($request->filled('id_linguistik')) {
+            $transaksi->Nilai_linguistik = $request->id_linguistik;
+        } else {
+            $transaksi->Nilai_linguistik = $request->null;
+        }
+        $transaksi->user_id = Auth::id();
         $transaksi->save();
         return redirect('transaksiguru_admin')
         ->with('success','New data transaksi successfully added!');

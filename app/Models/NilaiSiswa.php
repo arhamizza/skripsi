@@ -5,26 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TransaksiGuru extends Model
+class NilaiSiswa extends Model
 {
     use HasFactory;
-
-    protected $fillable =[
-        'id_guru',
-        'id_transaksi',
-        'id_nilai',
+    protected $fillable = [
         'id_siswa',
-        'id_nilai_luingistik',
+        'Nilai_linguistik',
+        'id_transaksi',
     ];
 
-    public function guru()
-    {
-        return $this->belongsTo(Guru::class,'id_guru','id');
-    }
-    public function transaksi()
-    {
-        return $this->belongsTo(Transaksi::class,'id_transaksi','id');
-    }
     public function siswa()
     {
         return $this->belongsTo(Siswa::class,'id_siswa','id');
@@ -33,5 +22,8 @@ class TransaksiGuru extends Model
     {
         return $this->belongsTo(Tabel::class,'Nilai_linguistik','id');
     }
-    
+    public function nilai()
+    {
+        return $this->belongsTo(Tabel::class,'id_transaksi','id');
+    }
 }

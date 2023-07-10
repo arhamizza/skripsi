@@ -67,14 +67,14 @@
                 </div>
             </li>
             <li class="{{ $elementActive == 'transaksi' || $elementActive == 'transaksi_guru' ? 'active' : '' }}">
-                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                <a data-toggle="collapse" aria-expanded="true" href="#transaksiguru">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
                     <p>
                             {{ __('Transaksi') }}
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse show" id="laravelExamples">
+                <div class="collapse show" id="transaksiguru">
                     <ul class="nav">
                         <li class="{{ $elementActive == 'transaksi' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'transaksi_admin') }}">

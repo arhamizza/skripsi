@@ -29,46 +29,6 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addtransaksi">
                 Add transaksi
             </button>
-            {{-- <div class="table-responsive">
-                <table class="table">
-                    <thead class=" text-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Kelas yang diuji</th>
-                            <th>Nama</th>
-                            <th>Keterangan</th>
-                            <th>Tanggal</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php 
-                        $no = 1;
-                        @endphp
-                        @foreach ($transaksi as $sk)
-                            <tr>
-                                <td>{{ $no }}</td>
-                                <td>{{ $sk->kelas->nama_kelas }}</td>
-                                <td>{{ $sk->nama }}</td>
-                                <td>{{ $sk->keterangan }}</td>
-                                <td>{{ date('d-M-y', strtotime($sk->tanggal)) }}</td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#Edittransaksi-{{ $sk->id }}">
-                                        <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                                    </button>
-                                    <br><br>
-                                    <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#Deletetransaksi-{{ $sk->id }}">
-                                        <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            @php $no++; @endphp
-                        @endforeach
-                    </tbody>
-                </table>
-            </div> --}}
             <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
@@ -146,7 +106,7 @@
                                 data-target="#Edittransaksi-{{ $transaksi_guru->id_guru }}">
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                             </button> --}}
-                            <a href="{{ url('transaksiguru_admin/' . $guru->id_guru) }}">LANJUT</a>
+                            <a href="{{ url('transaksiguru_guru/' . $guru->id_guru) }}">LANJUT</a>
                             {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
                                 data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
                                 <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>

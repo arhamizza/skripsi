@@ -72,11 +72,10 @@
             <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Kode</th>
                         <th>Nama Transaksi</th>
-                        <th>Nama Tanggal</th>
-                        <th>Nama Kelas</th>           
-                        <th>nama Siswa</th>
+                        <th>Nama Guru</th>                 
+                        <th>Nama Siswa</th>                 
+                        <th>Nilai linguistik</th>                 
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -84,38 +83,41 @@
                     @php 
                     $no = 1;
                     @endphp
-                    @foreach($transaksi as $transaksi_guru)
+                    @foreach($transaksi_gurusss as $transaksi_guruss)
                     <tr>
-                        <td>{{ $transaksi_guru->kode }}</td>
-                        <td>{{ $transaksi_guru->nama }}</td>
-                        <td>{{ $transaksi_guru->tanggal }}</td>
-                        <td>{{ $transaksi_guru->kelas->nama_kelas }}</td>
-                        {{-- <td>
-                            @foreach($transaksi_guru -> guru2 as $guru)
-                            @if($guru)
-                               {{ $guru ->nama_guru }}<br>
-                               
-                            @else
-                            
-                            @endif
-                        @endforeach    
-                        </td> --}}
-                        <td>                            
-                            @foreach($transaksi_guru -> siswa as $siswa)
-                            @if($siswa)
-                               {{ $siswa ->nama_siswa }}<br>
-                            @else
+                        {{-- @if($siswa)
+                        {{ $siswa ->nama_siswa }}<br>
+                     @else
+                     none
+                     @endif --}}
+                        <td>{{ $transaksi_guruss->transaksi->nama }}</td>               
+                        <td>{{ $transaksi_guruss->guru->nama_guru }}</td>  
+
+                            <td>
+                                @if ($transaksi_guruss->id_siswa != null)
+                                {{ $transaksi_guruss->siswa->nama_siswa }}
+                                @else
+                                none
+                            @endif 
+                        </td>  
+
+                        <td>
+                        @if ($transaksi_guruss->linguistik == null)
                             none
-                            @endif
-                        @endforeach
-                    </td>                
+                        @else
+                            {{ $transaksi_guruss->linguistik->asd->nama }}  
+                        @endif                           
+                        </td>
+                            
+                            
                         <td>
                             {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#Edittransaksi-{{ $transaksi_guru->id }}">
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                             </button> --}}
                             <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
+                                data-target="#Deletetransaksi-{{ $transaksi_guruss }}">
+                                <a href="{{ url('transaksiguru_admin/' . $transaksi_guruss->id_transaksi.'/'. $transaksi_guruss->id_guru) }}">aaaa</a>
                                 <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
                             </button>
                         </td>
@@ -125,42 +127,10 @@
 
                 </tbody>
             </table>
-
-            <table id="example" class="table" style="width:100%">
-                <thead class="text-primary">
-                    <tr>
-                        <th>Kode</th>   
-                        <th>Guru yang menilai</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php 
-                    $no = 1;
-                    @endphp
-                    @foreach($tran as $guru)
-                    <tr>
-                        <td>{{ $guru->guru->nama_guru }}</td>
-                        <td>                            
-                            {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#Edittransaksi-{{ $transaksi_guru->id_guru }}">
-                                <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                            </button> --}}
-                            <a href="{{ url('transaksiguru_admin/' . $guru->id_guru) }}">LANJUT</a>
-                            {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
-                                <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                            </button> --}}
-                        </td>
-                    </tr>
-                    @php $no++; @endphp
-                    @endforeach
-
-                </tbody>
-            </table>  
+ 
 
             <br><br>
-            <table id="example" class="display nowrap" style="width:100%">
+            {{-- <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -169,7 +139,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                {{-- <tbody>
+                <tbody>
                     @php 
                     $no = 1;
                     @endphp
@@ -181,7 +151,6 @@
                         <td>
                             <button class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#Edittransaksi-{{ $transaksi_guruss->id }}">
-                                <a href="{{ url('transaksiguru_admin/' . $transaksi_guruss->slug) }}">aaaa</a>
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                             </button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal"
@@ -193,8 +162,8 @@
                     @php $no++; @endphp
                     @endforeach
 
-                </tbody> --}}
-            </table>
+                </tbody>
+            </table> --}}
         </div>
     </div><!-- /.panel-->
     <!--/.main-->
@@ -216,7 +185,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form role="form" action="{{ url('transaksiguru_add') }}" method="POST">
+                    <form role="form" action="{{ url('transaksiuser_add_nilai') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <select class="form-select" name="id_transaksi">
@@ -227,12 +196,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-select" name="id_guru">
-                                <option value>Pilih Guru</option>
-                                @foreach ($gurus as $item)
-                                    <option value="{{ $item->id }} " class="bold">{{ $item->nama_guru }}</option>
+                            <select class="form-select" name="id_siswa">
+                                <option value>Pilih Siswa</option>
+                                @foreach ($siswa as $item)
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->nama_siswa }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-select" name="id_linguistik">
+                                <option value>Pilih Nilai Linguistik</option>
+                                @foreach ($tabel as $item)
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->asd->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input readonly   type="interger" class="form-control" name="id_guru" value= "{{$id_guru}}">
                         </div>
                 </div>
 
@@ -246,7 +226,7 @@
         </div>
     </div>
 
-    @foreach ($transaksigurus as $sk)
+    {{-- @foreach ($transaksigurus as $sk)
         <div class="modal" id="Edittransaksi-{{ $sk->id }}">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -306,5 +286,5 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 @endsection

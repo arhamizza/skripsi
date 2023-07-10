@@ -71,12 +71,9 @@
             </div> --}}
             <table id="example" class="display nowrap" style="width:100%">
                 <thead>
-                    <tr>
-                        <th>Kode</th>
-                        <th>Nama Transaksi</th>
-                        <th>Nama Tanggal</th>
-                        <th>Nama Kelas</th>           
-                        <th>nama Siswa</th>
+                    <tr>      
+                        <th>Nama Siswa</th>         
+                        <th>Nilai_linguistik</th>         
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -84,40 +81,24 @@
                     @php 
                     $no = 1;
                     @endphp
-                    @foreach($transaksi as $transaksi_guru)
+                    @foreach($nilai as $nilaii)
                     <tr>
-                        <td>{{ $transaksi_guru->kode }}</td>
-                        <td>{{ $transaksi_guru->nama }}</td>
-                        <td>{{ $transaksi_guru->tanggal }}</td>
-                        <td>{{ $transaksi_guru->kelas->nama_kelas }}</td>
-                        {{-- <td>
-                            @foreach($transaksi_guru -> guru2 as $guru)
-                            @if($guru)
-                               {{ $guru ->nama_guru }}<br>
-                               
-                            @else
-                            
-                            @endif
-                        @endforeach    
-                        </td> --}}
-                        <td>                            
-                            @foreach($transaksi_guru -> siswa as $siswa)
-                            @if($siswa)
-                               {{ $siswa ->nama_siswa }}<br>
-                            @else
-                            none
-                            @endif
-                        @endforeach
-                    </td>                
+
+
+                        <td>{{ $nilaii->siswa->nama_siswa }}</td>               
+                        {{-- <td>{{ $nilaii->linguistik->asd->nama}}</td>                --}}
+                        {{-- <td>{{ $nilai->guru->nama_guru }}</td>               
+                        <td>{{ $nilai->siswa->nama_siswa}}</td>                --}}
                         <td>
                             {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#Edittransaksi-{{ $transaksi_guru->id }}">
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                             </button> --}}
-                            <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
+                            {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#Deletetransaksi-{{ $transaksi_guruss }}">
+                                <a href="{{ url('transaksiguru_admin/' . $nilaii->id_guru.'/'. $nilaii->id_transaksi) }}">aaaa</a>
                                 <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                            </button>
+                            </button> --}}
                         </td>
                     </tr>
                     @php $no++; @endphp
@@ -125,42 +106,10 @@
 
                 </tbody>
             </table>
-
-            <table id="example" class="table" style="width:100%">
-                <thead class="text-primary">
-                    <tr>
-                        <th>Kode</th>   
-                        <th>Guru yang menilai</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php 
-                    $no = 1;
-                    @endphp
-                    @foreach($tran as $guru)
-                    <tr>
-                        <td>{{ $guru->guru->nama_guru }}</td>
-                        <td>                            
-                            {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#Edittransaksi-{{ $transaksi_guru->id_guru }}">
-                                <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                            </button> --}}
-                            <a href="{{ url('transaksiguru_admin/' . $guru->id_guru) }}">LANJUT</a>
-                            {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
-                                <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                            </button> --}}
-                        </td>
-                    </tr>
-                    @php $no++; @endphp
-                    @endforeach
-
-                </tbody>
-            </table>  
+ 
 
             <br><br>
-            <table id="example" class="display nowrap" style="width:100%">
+            {{-- <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -169,7 +118,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                {{-- <tbody>
+                <tbody>
                     @php 
                     $no = 1;
                     @endphp
@@ -181,7 +130,6 @@
                         <td>
                             <button class="btn btn-info btn-sm" data-toggle="modal"
                                 data-target="#Edittransaksi-{{ $transaksi_guruss->id }}">
-                                <a href="{{ url('transaksiguru_admin/' . $transaksi_guruss->slug) }}">aaaa</a>
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                             </button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal"
@@ -193,14 +141,14 @@
                     @php $no++; @endphp
                     @endforeach
 
-                </tbody> --}}
-            </table>
+                </tbody>
+            </table> --}}
         </div>
     </div><!-- /.panel-->
     <!--/.main-->
 
     <!-- The Modal -->
-    <div class="modal" id="Addtransaksi">
+    {{-- <div class="modal" id="Addtransaksi">
         <div class="modal-dialog">
             <div class="modal-content">
                 @if (session('error'))
@@ -230,7 +178,7 @@
                             <select class="form-select" name="id_guru">
                                 <option value>Pilih Guru</option>
                                 @foreach ($gurus as $item)
-                                    <option value="{{ $item->id }} " class="bold">{{ $item->nama_guru }}</option>
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->nama_guru }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -306,5 +254,5 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 @endsection
