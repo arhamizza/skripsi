@@ -2,7 +2,6 @@
     'class' => '',
     'elementActive' => 'siswa',
 ])
-
 @section('content')
     <div class="content">
         <h1>Tabel kriteria</h1>

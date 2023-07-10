@@ -21,21 +21,22 @@ class TransaksiGuruController extends Controller
 
         $gurus = Guru::all();
         $kelas = Kelas::all();
-        $siswa = Siswa::all();
+        $siswas = Siswa::all();
         $transaksi = Transaksi::all();
-        $transaksigurus = TransaksiGuru::orderBy('id_transaksi');
+        $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
         $tran = TransaksiGuru::distinct('id_guru')->get(['id_guru']);
         // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
-        // dd($tran);
-        return view('admin.Transaksi.transaksiguru',compact('gurus','transaksi','kelas','transaksigurus','tran'));
+        // dd($siswa);
+        return view('admin.Transaksi.transaksiguru',compact('gurus','transaksi','kelas','transaksigurus','tran','siswas'));
     }
 
     public function create(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            'id' => 'required|unique:gurus',
+            'id_guru' => 'required|different:transaksigurus',
+            'id_siswa' => 'required',
             'id_transaksi' => 'required',
         ]);
  
@@ -45,8 +46,13 @@ class TransaksiGuruController extends Controller
         $transaksi = new transaksiguru;
         $transaksi->id_guru = $request->id_guru;
         $transaksi->id_transaksi = $request->id_transaksi;
-        $transaksi->id_siswa = $request->null;
+        if($request->filled('id_siswa')) {
+            $transaksi->id_siswa = $request->id_siswa;
+        } else {
+            $transaksi->id_siswa = $request->null;
+        }
         $transaksi->Nilai_linguistik = $request->null;
+        $transaksi->user_id = $request->id_guru;
         $transaksi->save();
         return redirect('transaksiguru_admin')
         ->with('success','New data transaksi successfully added!');
@@ -76,7 +82,7 @@ class TransaksiGuruController extends Controller
         } else {
             $transaksi->Nilai_linguistik = $request->null;
         }
-        $transaksi->user_id = Auth::id();
+        $transaksi->user_id = $request->id_guru;
         $transaksi->save();
         return redirect('transaksiguru_admin')
         ->with('success','New data transaksi successfully added!');
@@ -85,14 +91,16 @@ class TransaksiGuruController extends Controller
     public function update(Request $request,$id)
     {
         $validator = Validator::make($request->all(), [
-            'id_guru' => 'required',
+            'id_siswa' => 'required',
+            'id_linguistik' => 'required',
         ]);
  
         if ($validator->fails()) {
             return back()->with('error', $validator->messages()->all()[0])->withInput();
         }
         $transaksi = transaksiguru::find($id);
-        $transaksi->id_guru = $request->id_guru;
+        $transaksi->id_siswa = $request->id_siswa;
+        $transaksi->Nilai_linguistik = $request->id_linguistik;
         $transaksi->save();
         return redirect('transaksiguru_admin')
         ->with('success','Data transaksi successfully updated!');

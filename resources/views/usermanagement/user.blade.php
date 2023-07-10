@@ -93,6 +93,10 @@
                     <form role="form" action="{{ url('usermanagement_add') }}" method="POST">
                         @csrf
                         <div class="form-group">
+                            <label>ID</label>
+                            <input class="form-control" name="id" placeholder="Samakan dengan id_guru">
+                        </div>
+                        <div class="form-group">
                             <label>Name</label>
                             <input class="form-control" name="name" placeholder="user Name">
                         </div>

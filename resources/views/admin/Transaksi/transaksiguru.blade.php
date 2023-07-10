@@ -128,8 +128,7 @@
 
             <table id="example" class="table" style="width:100%">
                 <thead class="text-primary">
-                    <tr>
-                        <th>Kode</th>   
+                    <tr> 
                         <th>Guru yang menilai</th>
                         <th>Action</th>
                     </tr>
@@ -158,43 +157,65 @@
 
                 </tbody>
             </table>  
-
-            <br><br>
-            <table id="example" class="display nowrap" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Transaksi</th>
-                        <th>Nama Guru</th>           
+<br><br><br>
+            <table id="example" class="table" style="width:100%">
+                <thead class="text-primary">
+                    <tr> 
+                        <th>no</th>
+                        <th>nama transaksi</th>
+                        <th> guru</th>
+                        <th> siswa</th>
+                        <th> kelas</th>
+                        <th>Linguistik</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                {{-- <tbody>
+                <tbody>
                     @php 
                     $no = 1;
                     @endphp
-                    @foreach($transaksigurus as $transaksi_guruss)
+                    @foreach($transaksigurus as $guru)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $transaksi_guruss->transaksi->nama }}</td>
-                        <td>{{ $transaksi_guruss->guru->nama_guru }}</td>                
+                        <td>{{ $guru->transaksi->nama }}</td>
+                        <td>{{ $guru->guru->nama_guru }}</td>
+                        <td>                                
+                            @if ($guru->id_siswa != null)
+                            {{ $guru->siswa->nama_siswa }}
+                            @else
+                            none
+                        @endif 
+
+
+                        </td>
+                        <td>{{ $guru->siswa->nama_kelas->nama_kelas }}</td>
                         <td>
-                            <button class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#Edittransaksi-{{ $transaksi_guruss->id }}">
-                                <a href="{{ url('transaksiguru_admin/' . $transaksi_guruss->slug) }}">aaaa</a>
+                            @if ($guru->linguistik == null)
+                            none
+                        @else
+                            {{ $guru->linguistik->asd->nama }}  
+                        @endif 
+                        </td>
+                        <td>                            
+                            {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#Edittransaksi-{{ $transaksi_guru->id_guru }}">
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                            </button>
-                            <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#Deletetransaksi-{{ $transaksi_guruss->id }}">
+                            </button> --}}
+                            <a href="{{ url('transaksiguru_admin/' . $guru->id_guru) }}">LANJUT</a>
+                            {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
                                 <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                            </button>
+                            </button> --}}
                         </td>
                     </tr>
                     @php $no++; @endphp
                     @endforeach
 
-                </tbody> --}}
-            </table>
+                </tbody>
+            </table>  
+
+            <br><br>
+
         </div>
     </div><!-- /.panel-->
     <!--/.main-->
@@ -231,6 +252,14 @@
                                 <option value>Pilih Guru</option>
                                 @foreach ($gurus as $item)
                                     <option value="{{ $item->id }} " class="bold">{{ $item->nama_guru }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-select" name="id_siswa">
+                                <option value>Pilih Siswa</option>
+                                @foreach ($siswas as $item)
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->nama_siswa }}</option>
                                 @endforeach
                             </select>
                         </div>

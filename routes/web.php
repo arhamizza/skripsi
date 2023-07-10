@@ -38,6 +38,7 @@ route::middleware(['auth', 'guru'])->group(function () {
 	Route::get('/transaksiguru_guru', [UserController::class, 'transaksi']);
 	Route::get('transaksiguru_guru/{id_guru}', [UserController::class, 'nilai_user']);
 	Route::post('/transaksiuser_add_nilai/', [UserController::class, 'create_nilai']);
+	Route::post('/transaksigurus_update/{id}', [UserController::class, 'update']);
 });
 
 route::middleware(['auth', 'isAdmin'])->group(function () {
@@ -101,7 +102,7 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/transaksiguru_admin', [TransaksiGuruController::class, 'index']);
 	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);
 	Route::post('/transaksiguru_add', [TransaksiGuruController::class, 'create']);
-	Route::post('/transaksiguru_update/{id}', [TransaksiGuruController::class, 'update']);
+	Route::post('/nilai_update/{id}', [TransaksiGuruController::class, 'update']);
 	// ------------------------ Transaksi Guru
 	Route::get('transaksiguru_admin/{id_guru}', [TransaksiController::class, 'nilai_admin']);
 	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);

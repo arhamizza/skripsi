@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Session;
 
 class UserManagementController extends Controller
@@ -36,6 +37,7 @@ class UserManagementController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
+            'id'    => 'required',
             'email' => 'required|unique:users|max:255',
             'password' => 'required',
             'name' => 'required',
@@ -46,13 +48,15 @@ class UserManagementController extends Controller
             return back()->with('error', $validator->messages()->all()[0])->withInput();
         }
         $user = new user;
+        $user->id = $request->id;
         $user->name = $request->name;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->is_active = $request->is_active;
         $user->save();
         return redirect('usermanagement')
         ->with('success','New data user successfully added!');
+
     }
 
     public function update(Request $request,$id)

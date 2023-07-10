@@ -29,46 +29,6 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addtransaksi">
                 Add transaksi
             </button>
-            {{-- <div class="table-responsive">
-                <table class="table">
-                    <thead class=" text-primary">
-                        <tr>
-                            <th>No</th>
-                            <th>Kelas yang diuji</th>
-                            <th>Nama</th>
-                            <th>Keterangan</th>
-                            <th>Tanggal</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php 
-                        $no = 1;
-                        @endphp
-                        @foreach ($transaksi as $sk)
-                            <tr>
-                                <td>{{ $no }}</td>
-                                <td>{{ $sk->kelas->nama_kelas }}</td>
-                                <td>{{ $sk->nama }}</td>
-                                <td>{{ $sk->keterangan }}</td>
-                                <td>{{ date('d-M-y', strtotime($sk->tanggal)) }}</td>
-                                <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#Edittransaksi-{{ $sk->id }}">
-                                        <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                                    </button>
-                                    <br><br>
-                                    <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#Deletetransaksi-{{ $sk->id }}">
-                                        <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            @php $no++; @endphp
-                        @endforeach
-                    </tbody>
-                </table>
-            </div> --}}
             <table id="example" class="display nowrap" style="width:100%">
                 <thead>
                     <tr>
@@ -111,10 +71,10 @@
                             
                             
                         <td>
-                            {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#Edittransaksi-{{ $transaksi_guru->id }}">
+                            <button class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#Edittransaksi-{{ $transaksi_guruss->id }}">
                                 <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                            </button> --}}
+                            </button>
                             <button class="btn btn-danger btn-sm" data-toggle="modal"
                                 data-target="#Deletetransaksi-{{ $transaksi_guruss }}">
                                 <a href="{{ url('transaksiguru_admin/' . $transaksi_guruss->id_transaksi.'/'. $transaksi_guruss->id_guru) }}">aaaa</a>
@@ -226,7 +186,7 @@
         </div>
     </div>
 
-    {{-- @foreach ($transaksigurus as $sk)
+    @foreach ($transaksi_gurusss as $sk)
         <div class="modal" id="Edittransaksi-{{ $sk->id }}">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -239,16 +199,28 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form role="form" action="{{ url('transaksiguru_update/' . $sk->id) }}" method="POST">
+                        <form role="form" action="{{ url('nilai_update/' . $sk->id) }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="position-option">Pilih Guru</label><br>
-                                <select class="form-control" id="type" name="id_guru">
-                                    @foreach ($gurus as $kel)
+                                <label for="position-option">Pilih Siswa</label><br>
+                                <select class="form-control" id="type" name="id_siswa">
+                                    @foreach ($siswa as $kel)
                                         <option value="{{ $kel->id }}"
-                                            {{ $kel->id == $sk->id ? 'selected' : '' }}>{{ $kel->nama_guru}}
+                                            {{ $kel->id == $sk->id_siswa ? 'selected' : '' }}>{{ $kel->nama_siswa}}
                                         </option>
                                     @endforeach
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="position-option">Pilih Linguistik</label><br>
+                                <select class="form-control" id="type" name="id_linguistik">
+                                    @foreach ($tabel as $kel)
+                                        <option value="{{ $kel->id }}"
+                                            {{ $kel->id == $sk->Nilai_linguistik ? 'selected' : '' }}>{{ $kel->asd->nama}}
+                                        </option>
+                                    @endforeach
+
                                 </select>
                             </div>
                     </div>
@@ -286,5 +258,5 @@
                 </div>
             </div>
         </div>
-    @endforeach --}}
+    @endforeach
 @endsection

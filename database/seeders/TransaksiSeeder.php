@@ -25,14 +25,14 @@ class TransaksiSeeder extends Seeder
             "kode" => "02",
             "id_kelas" => "1",
             'tanggal' => Carbon::parse('2000-01-01'),
-            "Nama" => "Pemilihan Siswa Terbaik Kelas 1A:",
+            "Nama" => "Pemilihan Siswa Terbaik Kelas 1B:",
             "Keterangan" => "Pemilihan ini ditujukan untuk memilih siswa terbaik yang diusulkan untuk mendapatkan beasiswa KEMRISTEKDIKTI",
         ]);
         Transaksi::create([
             "kode" => "03",
             "id_kelas" => "1",
             'tanggal' => Carbon::parse('2000-01-01'),
-            "Nama" => "Pemilihan Siswa Terbaik Kelas 1A:",
+            "Nama" => "Pemilihan Siswa Terbaik Kelas 1C:",
             "Keterangan" => "Pemilihan ini ditujukan untuk memilih siswa terbaik yang diusulkan untuk mendapatkan beasiswa KEMRISTEKDIKTI",
         ]);
     }

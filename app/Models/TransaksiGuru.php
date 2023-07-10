@@ -14,7 +14,8 @@ class TransaksiGuru extends Model
         'id_transaksi',
         'id_nilai',
         'id_siswa',
-        'id_nilai_luingistik',
+        'id_Nilai_luingistik',
+        'user_id',
     ];
 
     public function guru()

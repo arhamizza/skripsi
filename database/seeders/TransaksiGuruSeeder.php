@@ -16,27 +16,46 @@ class TransaksiGuruSeeder extends Seeder
         ModelsTransaksiGuru::create([
             "id_guru" => "1",
             "id_transaksi" => "1",
-            "id_nilai" => "1",
+            "id_siswa" => "1",
+            "Nilai_linguistik" => "1",
+            "user_id" => "1",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
-            "id_nilai" => "2",
+            "id_siswa" => "1",
+            "Nilai_linguistik" => "10",
+            "user_id" => "2",
+            
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "3",
             "id_transaksi" => "1",
-            "id_nilai" => "3",
+            "id_siswa" => "1",
+            "Nilai_linguistik" => "22",
+            "user_id" => "3",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "1",
             "id_transaksi" => "2",
-            "id_nilai" => "4",
+            "id_siswa" => "2",
+            "Nilai_linguistik" => "8",
+            "user_id" => "1",
        ]);
         ModelsTransaksiGuru::create([
             "id_guru" => "2",
             "id_transaksi" => "2",
-            "id_nilai" => "5",
+            "id_siswa" => "2",
+            "Nilai_linguistik" => "8",
+            "user_id" => "2",
        ]);
+        ModelsTransaksiGuru::create([
+            "id_guru" => "3",
+            "id_transaksi" => "2",
+            "id_siswa" => "2",
+            "Nilai_linguistik" => "4",
+            "user_id" => "3",
+       ]);
+        
     }
 }

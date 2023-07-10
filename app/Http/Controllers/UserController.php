@@ -64,7 +64,7 @@ class UserController extends Controller
         $siswa = Siswa::all();
         $transaksi = Transaksi::all();
         $transaksigurus = TransaksiGuru::orderBy('id_transaksi');
-        $tran = TransaksiGuru::where('user_id', Auth::id())->distinct('id_guru')->get(['id_guru']);
+        $tran = TransaksiGuru::where('id_guru', Auth::id())->distinct('id_guru')->get(['id_guru']);
         // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
         // dd($tran);
@@ -78,7 +78,7 @@ class UserController extends Controller
         $siswa = Siswa::orderBy('id_kelas')->get();
         $transaksi = Transaksi::orderBy('id')->get();
         $tabel = Tabel::all();
-        
+        $transaksigurus = TransaksiGuru::orderBy('id_transaksi');    
         Session::put('menu','transaksi');
         if (TransaksiGuru::where('id_guru', $id_guru)->exists()) {
             $transaksi_guruss = TransaksiGuru::get();
@@ -89,7 +89,7 @@ class UserController extends Controller
             // $nilai = NilaiSiswa::where('id_transaksiguru', $transaksi_gurusss->id)->get();
 
             return view('users.nilaiuser', 
-            compact('transaksi_gurusss','transaksi_guruss','siswa','tabel','id_guru','transaksi'));
+            compact('transaksi_gurusss','transaksi_guruss','siswa','tabel','id_guru','transaksi','transaksigurus'));
         } else {
             return redirect('/')->where('id_guru', "Slug doesnot exists");
         }
@@ -121,8 +121,31 @@ class UserController extends Controller
         }
         $transaksi->user_id = Auth::id();
         $transaksi->save();
-        return redirect('users.nilaiuser')
+        return redirect('transaksiguru_guru')
         ->with('success','New data transaksi successfully added!');
+    }
+
+    public function update(Request $request,$id)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_linguistik' => 'required',
+        ]);
+ 
+        if ($validator->fails()) {
+            return back()->with('error', $validator->messages()->all()[0])->withInput();
+        }
+        $transaksi = transaksiguru::find($id);
+        $transaksi->Nilai_linguistik = $request->id_linguistik;
+        $transaksi->save();
+        return redirect('transaksiguru_guru')
+        ->with('success','Data transaksi successfully updated!');
+    }
+
+    public function delete($id)
+    {
+        transaksiguru::find($id)->delete();
+         return redirect('transaksiguru_admin')
+         ->with('success','Data transaksi successfully deleted!');
     }
     
 }

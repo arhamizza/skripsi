@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('id_guru');
             $table->integer('id_transaksi');
-            $table->integer('id_nilai');
+            $table->integer('id_siswa')->nullable();
+            $table->integer('Nilai_linguistik')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
