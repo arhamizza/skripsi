@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => 'login-page',
-    'backgroundImagePath' => 'img/bg/fabio-mangione.jpg'
+    'backgroundImagePath' => 'img/bg/bg.jpg'
 ])
 
 @section('content')
@@ -47,15 +47,6 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
-                                <div class="form-check">
-                                     <label class="form-check-label">
-                                        <input class="form-check-input" name="remember" type="checkbox" value="" {{ old('remember') ? 'checked' : '' }}>
-                                        <span class="form-check-sign"></span>
-                                        {{ __('Remember me') }}
-                                    </label>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="card-footer">
@@ -65,12 +56,6 @@
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('password.request') }}" class="btn btn-link">
-                    {{ __('Forgot password') }}
-                </a>
-                <a href="{{ route('register') }}" class="btn btn-link float-right">
-                    {{ __('Create Account') }}
-                </a>
             </div>
         </div>
     </div>

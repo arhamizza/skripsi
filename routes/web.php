@@ -10,6 +10,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiAdminController;
 use App\Http\Controllers\TransaksiGuruController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\UserController;
@@ -35,8 +36,8 @@ Route::get('/kelas', [UserController::class, 'userkelas']);
 Route::get('/siswa', [UserController::class, 'usersiswa']);
 
 route::middleware(['auth', 'guru'])->group(function () {
-	Route::get('/transaksiguru_guru', [UserController::class, 'transaksi']);
-	Route::get('transaksiguru_guru/{id_guru}', [UserController::class, 'nilai_user']);
+	Route::get('/transaksiuser', [UserController::class, 'transaksi']);
+	Route::get('transaksiguru_next/{id}', [UserController::class, 'view']);
 	Route::post('/transaksiuser_add_nilai/', [UserController::class, 'create_nilai']);
 	Route::post('/transaksigurus_update/{id}', [UserController::class, 'update']);
 });
@@ -108,6 +109,18 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/transaksiguru_delete/{id}', [TransaksiGuruController::class, 'delete']);
 	Route::post('/transaksiguru_add_nilai/', [TransaksiGuruController::class, 'create_nilai']);
 	Route::post('/transaksiguru_update/{id}', [TransaksiGuruController::class, 'update']);
+
+
+	Route::get('/transaksigurus_add', [TransaksiAdminController::class, 'index2']);
+	Route::get('/transaksigurus_edit/{id}', [TransaksiAdminController::class, 'edit']);
+	Route::post('/update_transaksi/{id}', [TransaksiAdminController::class, 'update']);
+	Route::post('/transaksigurus_create', [TransaksiAdminController::class, 'tambah']);
+
+	Route::post('/transaksimodalguru_add', [TransaksiAdminController::class, 'guruadd']);
+	Route::post('/transaksimodalsiswa_add', [TransaksiAdminController::class, 'siswaadd']);
+	Route::get('/transaksisiswa_delete/{id}', [TransaksiAdminController::class, 'deletesiswa']);
+	Route::get('/transaksiguru_delete/{id}', [TransaksiAdminController::class, 'deleteguru']);
+
 });
 Auth::routes();
 

@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             KelasSeeder::class,
             SiswaSeeder::class,
             TransaksiSeeder::class,
-            TransaksiGuruSeeder::class,
         ]);
         // datatable::Factory()->count(10)->create();
     }

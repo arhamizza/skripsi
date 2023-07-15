@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\Kriteria;
 use App\Models\Siswa;
 use App\Models\Transaksi;
 use App\Models\TransaksiGuru;
+use App\Models\Transaksitambah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,12 +25,14 @@ class TransaksiGuruController extends Controller
         $kelas = Kelas::all();
         $siswas = Siswa::all();
         $transaksi = Transaksi::all();
+        $Kriteria = Kriteria::all();
         $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
         $tran = TransaksiGuru::distinct('id_guru')->get(['id_guru']);
         // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
         // dd($siswa);
-        return view('admin.Transaksi.transaksiguru',compact('gurus','transaksi','kelas','transaksigurus','tran','siswas'));
+        return view('admin.Transaksi.transaksiguru',
+        compact('gurus','transaksi','kelas','transaksigurus','tran','siswas','Kriteria'));
     }
 
     public function create(Request $request)
@@ -38,6 +42,7 @@ class TransaksiGuruController extends Controller
             'id_guru' => 'required|different:transaksigurus',
             'id_siswa' => 'required',
             'id_transaksi' => 'required',
+            'id_kriteria' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -52,6 +57,7 @@ class TransaksiGuruController extends Controller
             $transaksi->id_siswa = $request->null;
         }
         $transaksi->Nilai_linguistik = $request->null;
+        $transaksi->id_kriteria = $request->id_kriteria;
         $transaksi->user_id = $request->id_guru;
         $transaksi->save();
         return redirect('transaksiguru_admin')
@@ -64,6 +70,7 @@ class TransaksiGuruController extends Controller
             'id_transaksi' => 'required',
             'id_siswa' => 'required',
             'id_guru' => 'required',
+            'id_kriteria' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -83,6 +90,7 @@ class TransaksiGuruController extends Controller
             $transaksi->Nilai_linguistik = $request->null;
         }
         $transaksi->user_id = $request->id_guru;
+        $transaksi->id_kriteria = $request->id_kriteria;
         $transaksi->save();
         return redirect('transaksiguru_admin')
         ->with('success','New data transaksi successfully added!');
@@ -112,4 +120,6 @@ class TransaksiGuruController extends Controller
          return redirect('transaksiguru_admin')
          ->with('success','Data transaksi successfully deleted!');
     }
+
+
 }

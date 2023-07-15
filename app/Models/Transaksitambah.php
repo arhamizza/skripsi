@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TransaksiGuru extends Model
+class Transaksitambah extends Model
 {
     use HasFactory;
 
+    protected $table = 'Transaksi_tambahs';
     protected $fillable =[
         'id_guru',
         'id_transaksi',
         'id_nilai',
         'id_siswa',
         'id_Nilai_luingistik',
-        'id_kriteria',
         'user_id',
     ];
 
@@ -34,10 +34,6 @@ class TransaksiGuru extends Model
     public function linguistik()
     {
         return $this->belongsTo(Tabel::class,'Nilai_linguistik','id');
-    }
-    public function Kriteria()
-    {
-        return $this->belongsTo(Kriteria::class,'id_kriteria','id');
     }
     
 }

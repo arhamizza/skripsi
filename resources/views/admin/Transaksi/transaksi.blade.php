@@ -26,9 +26,7 @@
         @endif
         <div class="content">
             <h1>DAFTAR TRANSAKSI</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addtransaksi">
-                Add transaksi
-            </button>
+            <a href="{{ url('transaksigurus_add')}}" class="btn btn-primary">Tambah</a>
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-primary">
@@ -53,10 +51,7 @@
                                 <td>{{ $sk->keterangan }}</td>
                                 <td>{{ date('d-M-y', strtotime($sk->tanggal)) }}</td>
                                 <td>
-                                    <button class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#Edittransaksi-{{ $sk->id }}">
-                                        <i class="fa-solid fa-pen-to-square fa-2xl"></i>
-                                    </button>
+                                        <a href="{{ url('transaksigurus_edit/'.$sk->id)}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square fa-2xl"></i></a>
                                     <br><br>
                                     <button class="btn btn-danger btn-sm" data-toggle="modal"
                                         data-target="#Deletetransaksi-{{ $sk->id }}">

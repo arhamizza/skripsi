@@ -13,6 +13,8 @@ use App\Models\Siswa;
 use App\Models\tabel;
 use App\Models\Transaksi;
 use App\Models\TransaksiGuru;
+use App\Models\TransaksiGuruu;
+use App\Models\TransaksiSiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -64,13 +66,25 @@ class UserController extends Controller
         $siswa = Siswa::all();
         $transaksi = Transaksi::all();
         $transaksigurus = TransaksiGuru::orderBy('id_transaksi');
-        $tran = TransaksiGuru::where('id_guru', Auth::id())->distinct('id_guru')->get(['id_guru']);
         // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
         // dd($tran);
-        return view('users.transaksiuser',compact('gurus','transaksi','kelas','transaksigurus','tran'));
+        return view('users.transaksiuser',compact('gurus','transaksi','kelas','transaksigurus'));
     }
+    public function view($id)
+    {
+        $transaksi = Transaksi::find($id);
+        $gurus = Guru::all();
+        $kelas = Kelas::all();
+        $siswas = Siswa::all();
+        // $transaksi = Transaksi::all();
+        // $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
+        $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->where('user_id', Auth::id())->get();
+        $transaksisiswa = TransaksiSiswa::where('id_transaksi', $id)->get();
+        // dd($transaksi);
+        return view('users.user',compact('gurus','transaksi','kelas','transaksigurus','siswas','transaksisiswa'));
 
+    }
     public function nilai_user($id_guru)
     {
         $gurus = Guru::all();

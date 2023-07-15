@@ -29,6 +29,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addtransaksi">
                 Add transaksi
             </button>
+            <a href="{{ url('transaksigurus_add')}}" class="btn btn-primary">Tambah</a>
             {{-- <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-primary">
@@ -75,7 +76,7 @@
                         <th>Kode</th>
                         <th>Nama Transaksi</th>
                         <th>Nama Tanggal</th>
-                        <th>Nama Kelas</th>           
+                        <th>Nama Kelas</th>            
                         <th>nama Siswa</th>
                         <th>Action</th>
                     </tr>
@@ -163,9 +164,10 @@
                     <tr> 
                         <th>no</th>
                         <th>nama transaksi</th>
-                        <th> guru</th>
-                        <th> siswa</th>
+                        <th>nama guru</th>
+                        <th>siswa</th>
                         <th> kelas</th>
+                        <th> Kriteria</th>
                         <th>Linguistik</th>
                         <th>Action</th>
                     </tr>
@@ -189,6 +191,7 @@
 
                         </td>
                         <td>{{ $guru->siswa->nama_kelas->nama_kelas }}</td>
+                        <td>{{ $guru->Kriteria->nama_kriteria }}</td>
                         <td>
                             @if ($guru->linguistik == null)
                             none
@@ -263,6 +266,45 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <select class="form-select" name="id_kriteria">
+                                <option value>Pilih Kriteria</option>
+                                @foreach ($Kriteria as $item)
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->nama_kriteria }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <table id="example" class="table" style="width:100%">
+                            <thead class="text-primary">
+                                <tr> 
+                                    <th>Guru yang menilai</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php 
+                                $no = 1;
+                                @endphp
+                                @foreach($tran as $guru)
+                                <tr>
+                                    <td>{{ $guru->guru->nama_guru }}</td>
+                                    <td>                            
+                                        {{-- <button class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#Edittransaksi-{{ $transaksi_guru->id_guru }}">
+                                            <i class="fa-solid fa-pen-to-square fa-2xl"></i>
+                                        </button> --}}
+                                        <a href="{{ url('transaksiguru_admin/' . $guru->id_guru) }}">LANJUT</a>
+                                        {{-- <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#Deletetransaksi-{{ $transaksi_guru->id }}">
+                                            <i class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
+                                        </button> --}}
+                                    </td>
+                                </tr>
+                                @php $no++; @endphp
+                                @endforeach
+            
+                            </tbody>
+                        </table> 
                 </div>
 
                 <!-- Modal footer -->

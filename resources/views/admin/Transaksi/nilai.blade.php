@@ -34,7 +34,8 @@
                     <tr>
                         <th>Nama Transaksi</th>
                         <th>Nama Guru</th>                 
-                        <th>Nama Siswa</th>                 
+                        <th>Nama Siswa</th>
+                        <th>Kriteria</th>               
                         <th>Nilai linguistik</th>                 
                         <th>Action</th>
                     </tr>
@@ -60,7 +61,7 @@
                                 none
                             @endif 
                         </td>  
-
+                        <td>{{ $transaksi_guruss->kriteria->nama_kriteria }}</td>
                         <td>
                         @if ($transaksi_guruss->linguistik == null)
                             none
@@ -168,6 +169,14 @@
                                 <option value>Pilih Nilai Linguistik</option>
                                 @foreach ($tabel as $item)
                                     <option value="{{ $item->id }}" class="bold">{{ $item->asd->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-select" name="id_kriteria">
+                                <option value>Pilih Kriteria</option>
+                                @foreach ($Kriteria as $item)
+                                    <option value="{{ $item->id }}" class="bold">{{ $item->nama_kriteria }}</option>
                                 @endforeach
                             </select>
                         </div>

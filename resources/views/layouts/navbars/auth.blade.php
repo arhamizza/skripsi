@@ -2,7 +2,7 @@
     <div class="logo">
         <a href="{{ route('page.index', 'home') }}" class="simple-text logo-mini">
             <div class="logo-image-small">
-                <img src="{{ asset('paper') }}/img/logo-small.png">
+                <img src="{{ asset('paper') }}/img/smp.png">
             </div>
         </a>
         <a href="{{ route('page.index', 'home') }}" class="simple-text logo-normal">

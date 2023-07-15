@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="{{ $elementActive == 'transaksiuser' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'transaksiguru_guru') }}">
+                <a href="{{ route('page.index', 'transaksiuser') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
                     <p>{{ __('Transaksi') }}</p>
                 </a>

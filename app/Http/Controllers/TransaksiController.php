@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\guru;
 use App\Models\Kelas;
+use App\Models\Kriteria;
 use App\Models\NilaiSiswa;
 use App\Models\Siswa;
 use App\Models\Tabel;
@@ -30,6 +31,7 @@ class TransaksiController extends Controller
         $siswa = Siswa::orderBy('id_kelas')->get();
         $transaksi = Transaksi::orderBy('id')->get();
         $tabel = Tabel::all();
+        $Kriteria = Kriteria::all();
         
         Session::put('menu','transaksi');
         if (TransaksiGuru::where('id_guru', $id_guru)->exists()) {
@@ -41,7 +43,7 @@ class TransaksiController extends Controller
             // $nilai = NilaiSiswa::where('id_transaksiguru', $transaksi_gurusss->id)->get();
 
             return view('admin.Transaksi.nilai', 
-            compact('transaksi_gurusss','transaksi_guruss','siswa','tabel','id_guru','transaksi'));
+            compact('transaksi_gurusss','transaksi_guruss','siswa','tabel','id_guru','transaksi','Kriteria'));
         } else {
             return redirect('/')->where('id_guru', "Slug doesnot exists");
         }
