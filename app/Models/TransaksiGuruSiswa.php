@@ -15,4 +15,16 @@ class TransaksiGuruSiswa extends Model
         'id_transaksi',
         'id_guru',
     ];
+    public function linguistik()
+    {
+        return $this->belongsTo(Tabel::class,'nilai','id');
+    }
+    public function kriteria()
+    {
+        return $this->belongsTo(Kriteria::class,'id_kriteria','id');
+    }
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class,'id_siswa','id');
+    }
 }

@@ -6,7 +6,7 @@
 @section('content')
     <div class="content">
         <div class="card">
-            <a href="{{ url('transaksi_admin')}}" class="btn btn-light"><i class="fa-sharp fa-solid fa-left-long fa-2xl"></i></a>
+            <a href="{{ url('transaksiuser')}}" class="btn btn-light"><i class="fa-sharp fa-solid fa-left-long fa-2xl"></i></a>
             <div class="card-body">
                 <div class="class-header">
                     <h3>Tambah Data</h3>
@@ -80,11 +80,8 @@
                                                             data-target="#Edittransaksi-{{ $transaksi_guru->id }}">
                                                             <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                                                         </button> --}}
-                                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                                                data-target="#Deletetransaksi-{{ $item->id }}">
-                                                                <i
-                                                                    class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
-                                                            </button>
+                                                        <a href="{{ url('transaksigurusiswa_next/'.$transaksi->id. '/' .$item->id_siswa)}}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-arrow-right fa-2xl"></i></a>
+                                                
                                                         </td>
                                                         @php $no++; @endphp
                                                 @endforeach

@@ -42,7 +42,7 @@
                                         <label style="font-size: 20px">Tanggal</label>
                                         <input type="date" name="tanggal" id="tanggal" class="form-control"
                                             style="width: 100%; display: inline;" onchange="invoicedue(event);" required
-                                            value="{{ old('started_at') }}">
+                                            value="{{ $transaksi->tanggal }}">
                                     </div>
                                     <div class="form-group">
                                         <label style="font-size: 20px">Keterangan</label>
@@ -99,6 +99,7 @@
                                                                 <i
                                                                     class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
                                                             </button>
+                                                            <a href="{{ url('transaksigurus_editnext/'.$transaksi->id. '/' .$transaksi_guru->id_guru)}}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-arrow-right fa-2xl"></i></a>
                                                         </td>
                                                         @php $no++; @endphp
                                                 @endforeach

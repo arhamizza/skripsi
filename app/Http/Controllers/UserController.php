@@ -13,6 +13,7 @@ use App\Models\Siswa;
 use App\Models\tabel;
 use App\Models\Transaksi;
 use App\Models\TransaksiGuru;
+use App\Models\TransaksiGuruSiswa;
 use App\Models\TransaksiGuruu;
 use App\Models\TransaksiSiswa;
 use Illuminate\Http\Request;
@@ -85,6 +86,21 @@ class UserController extends Controller
         return view('users.user',compact('gurus','transaksi','kelas','transaksigurus','siswas','transaksisiswa'));
 
     }
+
+    public function vieww($id ,$id_siswa)
+    {
+        $transaksi = Transaksi::find($id);
+        $transaksii = TransaksiSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->first();
+        $viewtabel= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->get();
+        $viewtabel2= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->first();
+        $gurus = Guru::all();
+        $kelas = Kelas::all();
+        $kriteria = Kriteria::all();
+        $tabel = tabel::all();
+        // dd($transaksii);
+        return view('users.usernilai',compact('gurus','transaksi','transaksii','kelas','kriteria','tabel','viewtabel','viewtabel2'));
+
+    }
     public function nilai_user($id_guru)
     {
         $gurus = Guru::all();
@@ -114,44 +130,48 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'id_transaksi' => 'required',
             'id_siswa' => 'required',
-            'id_guru' => 'required',
+            'id_kriteria' => 'required',
+            'nilai' => 'required',
         ]);
  
         if ($validator->fails()) {
             return back()->with('error', $validator->messages()->all()[0])->withInput();
         }
-        $transaksi = new transaksiguru;
-        $transaksi->id_guru = $request->id_guru;
+        $transaksi = new TransaksiGuruSiswa();
         $transaksi->id_transaksi = $request->id_transaksi;
-        if($request->filled('id_siswa')) {
-            $transaksi->id_siswa = $request->id_siswa;
-        } else {
-            $transaksi->id_siswa = $request->null;
-        }
-        if($request->filled('id_linguistik')) {
-            $transaksi->Nilai_linguistik = $request->id_linguistik;
-        } else {
-            $transaksi->Nilai_linguistik = $request->null;
-        }
-        $transaksi->user_id = Auth::id();
+        $transaksi->id_siswa = $request->id_siswa;
+        $transaksi->id_guru = Auth::id();
+        $transaksi->id_kriteria = $request->id_kriteria;
+        $transaksi->nilai = $request->nilai;
         $transaksi->save();
-        return redirect('transaksiguru_guru')
+        return redirect('transaksigurusiswa_next/'.$request->id_transaksi. '/' .$request->id_siswa)
         ->with('success','New data transaksi successfully added!');
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_linguistik' => 'required',
+            'nilai' => 'required',
+            'id_kriteria' => 'required',
+            'id_transaksi' => 'required',
+            'id_siswa' => 'required',
         ]);
  
         if ($validator->fails()) {
             return back()->with('error', $validator->messages()->all()[0])->withInput();
         }
-        $transaksi = transaksiguru::find($id);
-        $transaksi->Nilai_linguistik = $request->id_linguistik;
-        $transaksi->save();
-        return redirect('transaksiguru_guru')
+        $transaksi = TransaksiGuruSiswa::find($id);
+        $transaksi->id_transaksi = $request->id_transaksi;
+        $transaksi->id_siswa = $request->id_siswa;
+        $transaksi->nilai = $request->nilai;
+        // if($request->filled('id_linguistik')) {
+        //     $transaksi->Nilai_linguistik = $request->id_linguistik;
+        // } else {
+        //     $transaksi->Nilai_linguistik = $request->null;
+        // }
+        // dd($transaksi);
+        $transaksi->update();
+        return redirect('transaksigurusiswa_next/'.$request->id_transaksi. '/' .$request->id_siswa)
         ->with('success','Data transaksi successfully updated!');
     }
 

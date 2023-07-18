@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\Kriteria;
 use App\Models\Siswa;
 use App\Models\Transaksi;
-use App\Models\TransaksiGuru;
+use App\Models\TransaksiGuruSiswa;
 use App\Models\TransaksiGuruu;
 use App\Models\TransaksiSiswa;
-use App\Models\Transaksitambah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
@@ -22,10 +22,7 @@ class TransaksiAdminController extends Controller
         $kelas = Kelas::all();
         $siswas = Siswa::distinct('id_kelas')->get(['id_kelas']);
         $transaksi = Transaksi::all();
-        $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
-        $tran = TransaksiGuru::distinct('id_guru')->get(['id_guru']);
-        $tambah = Transaksitambah::all();
-        return view('admin.Transaksi.tambah',compact('gurus','transaksi','kelas','transaksigurus','tran','siswas','tambah'));
+        return view('admin.Transaksi.tambah',compact('gurus','transaksi','kelas','siswas'));
 
     }
     public function tambah(Request $request)
@@ -59,17 +56,32 @@ class TransaksiAdminController extends Controller
         $gurus = Guru::all();
         $kelas = Kelas::all();
         $siswas = Siswa::all();
+        $kriteria = Kriteria::all();
         // $transaksi = Transaksi::all();
         // $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
         $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->get();
         $transaksisiswa = TransaksiSiswa::where('id_transaksi', $id)->get();
         // dd($transaksi);
-        return view('admin.Transaksi.edit',compact('gurus','transaksi','kelas','transaksigurus','siswas','transaksisiswa'));
+        return view('admin.Transaksi.edit',compact('gurus','transaksi','kelas','transaksigurus','siswas','transaksisiswa','kriteria'));
+
+    }
+    public function editview($id , $id_guru)
+    {
+        $transaksi = Transaksi::find($id);
+        $transaksii = TransaksiGuruu::where('id_transaksi', $id)->where('id_guru', $id_guru)->first();
+        $viewtabel= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_guru', $id_guru)->get();
+        $siswas = Siswa::all();
+        // $transaksi = Transaksi::all();
+        // $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
+        $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->get();
+        $transaksisiswa = TransaksiSiswa::where('id_transaksi', $id)->get();
+        // dd($transaksi);
+        return view('admin.Transaksi.editnilai',compact('transaksii','transaksi','viewtabel','transaksigurus','siswas','transaksisiswa'));
 
     }
     public function update(Request $request, $id)
     {
-                $validator = Validator::make($request->all(), [
+            $validator = Validator::make($request->all(), [
             'kode' => 'required',
             'nama' => 'required',
             'id_kelas' => 'required',
