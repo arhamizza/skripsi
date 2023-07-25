@@ -80,8 +80,12 @@
                                                             data-target="#Edittransaksi-{{ $transaksi_guru->id }}">
                                                             <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                                                         </button> --}}
+                                                        @if ($transaksigurus)
                                                         <a href="{{ url('transaksigurusiswa_next/'.$transaksi->id. '/' .$item->id_siswa)}}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-arrow-right fa-2xl"></i></a>
-                                                
+                                                        @else
+                                                        
+                                                        @endif 
+                                                      
                                                         </td>
                                                         @php $no++; @endphp
                                                 @endforeach

@@ -82,12 +82,6 @@
                                 <span class="sidebar-normal">{{ __(' Transaksi ') }}</span>
                             </a>
                         </li>
-                        <li class="{{ $elementActive == 'transaksi_guru' ? 'active' : '' }}">
-                            <a href="{{ route('page.index', 'transaksiguru_admin') }}">
-                                <span class="sidebar-mini-icon">{{ __('TG') }}</span>
-                                <span class="sidebar-normal">{{ __(' Transaksi Guru ') }}</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </li>

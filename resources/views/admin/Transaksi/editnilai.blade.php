@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'transaksi_guru',
+    'elementActive' => 'transaksi',
 ])
 
 @section('content')
@@ -47,7 +47,6 @@
                                                     <th scope="col">NAMA Siswa</th>
                                                     <th scope="col">NAMA Kriteria</th>
                                                     <th scope="col">Nilai LINGUISTIK</th>
-                                                    <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             

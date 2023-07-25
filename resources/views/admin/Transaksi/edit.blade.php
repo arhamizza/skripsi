@@ -1,6 +1,6 @@
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'transaksi_guru',
+    'elementActive' => 'transaksi',
 ])
 
 @section('content')
@@ -205,7 +205,7 @@
                                                             <i class="fa-solid fa-pen-to-square fa-2xl"></i>
                                                         </button> --}}
                                                             <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                                                data-target="#Deletetransaksi-{{ $item->id }}">
+                                                                data-target="#Deletetransaksii-{{ $item->id }}">
                                                                 <i
                                                                     class="fa-sharp fa-solid fa-trash fa-beat-fade fa-2xl"></i>
                                                             </button>
@@ -259,7 +259,31 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        @foreach ($transaksisiswa as $sk)                                        
+                                        <div class="modal" id="Deletetransaksii-{{ $sk->id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                    
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Delete transaksi</h4>
+                                    
+                                                    </div>
+                                    
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <h5>Apakah Kamu Yakin Delete?</h5>
+                                                    </div>
+                                    
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <a href="{{ url('transaksisiswa_delete/' . $sk->id) }}" class="btn btn-info">Yes</a>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
                                         
                                     </div>
                                 </div>

@@ -13,7 +13,10 @@ class TransaksiGuruSiswa extends Model
 
     protected $fillable =[
         'id_transaksi',
+        'id_siswa',
+        'id_kriteria',
         'id_guru',
+        'nilai',
     ];
     public function linguistik()
     {

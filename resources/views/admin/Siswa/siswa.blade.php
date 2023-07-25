@@ -88,7 +88,7 @@
                         <div class="form-group">
                             <label for="position-option">Pilih Kelas</label><br>
                             <select class="form-select" name="id_kelas">
-                                <option value>Pilih Nama Linguistik</option>
+                                <option value>Pilih Kelas</option>
                                 @foreach ($siswa2 as $item)
                                     <option value="{{ $item->id }}" class="bold">{{ $item->nama_kelas }}</option>
                                 @endforeach

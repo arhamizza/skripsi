@@ -12,7 +12,6 @@ use App\Models\Kriteria;
 use App\Models\Siswa;
 use App\Models\tabel;
 use App\Models\Transaksi;
-use App\Models\TransaksiGuru;
 use App\Models\TransaksiGuruSiswa;
 use App\Models\TransaksiGuruu;
 use App\Models\TransaksiSiswa;
@@ -66,11 +65,10 @@ class UserController extends Controller
         $kelas = Kelas::all();
         $siswa = Siswa::all();
         $transaksi = Transaksi::all();
-        $transaksigurus = TransaksiGuru::orderBy('id_transaksi');
         // $tran = DB::table('transaksi_gurus')->select('id_guru')->distinct()->get();
         Session::put('menu','transaksi');
         // dd($tran);
-        return view('users.transaksiuser',compact('gurus','transaksi','kelas','transaksigurus'));
+        return view('users.transaksiuser',compact('gurus','transaksi','kelas','siswa'));
     }
     public function view($id)
     {
@@ -79,11 +77,11 @@ class UserController extends Controller
         $kelas = Kelas::all();
         $siswas = Siswa::all();
         // $transaksi = Transaksi::all();
-        // $transaksigurus = TransaksiGuru::orderBy('id_transaksi')->get();
-        $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->where('user_id', Auth::id())->get();
+        $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->where('id_guru', Auth::id())->first();
+        // $transaksigurus = TransaksiGuruu::where('id_transaksi', $id)->where('user_id', Auth::id())->get();
         $transaksisiswa = TransaksiSiswa::where('id_transaksi', $id)->get();
-        // dd($transaksi);
-        return view('users.user',compact('gurus','transaksi','kelas','transaksigurus','siswas','transaksisiswa'));
+        // dd($transaksigurus);
+        return view('users.user',compact('gurus','transaksi','kelas','siswas','transaksisiswa','transaksigurus'));
 
     }
 
@@ -91,7 +89,7 @@ class UserController extends Controller
     {
         $transaksi = Transaksi::find($id);
         $transaksii = TransaksiSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->first();
-        $viewtabel= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->get();
+        $viewtabel= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->where('id_guru', Auth::id())->get();
         $viewtabel2= TransaksiGuruSiswa::where('id_transaksi', $id)->where('id_siswa', $id_siswa)->first();
         $gurus = Guru::all();
         $kelas = Kelas::all();
@@ -108,21 +106,12 @@ class UserController extends Controller
         $siswa = Siswa::orderBy('id_kelas')->get();
         $transaksi = Transaksi::orderBy('id')->get();
         $tabel = Tabel::all();
-        $transaksigurus = TransaksiGuru::orderBy('id_transaksi');    
-        Session::put('menu','transaksi');
-        if (TransaksiGuru::where('id_guru', $id_guru)->exists()) {
-            $transaksi_guruss = TransaksiGuru::get();
-            $transaksi_gurusss = TransaksiGuru::where('id_guru', $id_guru)->get();
-            $id_guru;
-            //  dd($transaksi);
-
-            // $nilai = NilaiSiswa::where('id_transaksiguru', $transaksi_gurusss->id)->get();
 
             return view('users.nilaiuser', 
             compact('transaksi_gurusss','transaksi_guruss','siswa','tabel','id_guru','transaksi','transaksigurus'));
-        } else {
+       
             return redirect('/')->where('id_guru', "Slug doesnot exists");
-        }
+        
     }
     public function create_nilai(Request $request)
     {
@@ -175,11 +164,5 @@ class UserController extends Controller
         ->with('success','Data transaksi successfully updated!');
     }
 
-    public function delete($id)
-    {
-        transaksiguru::find($id)->delete();
-         return redirect('transaksiguru_admin')
-         ->with('success','Data transaksi successfully deleted!');
-    }
     
 }

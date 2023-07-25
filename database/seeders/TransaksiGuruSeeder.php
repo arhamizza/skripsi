@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\TransaksiGuru as ModelsTransaksiGuru;
+use App\Models\TransaksiGuruSiswa ;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,48 +13,48 @@ class TransaksiGuruSeeder extends Seeder
      */
     public function run(): void
     {
-        ModelsTransaksiGuru::create([
-            "id_guru" => "1",
-            "id_transaksi" => "1",
-            "id_siswa" => "1",
-            "Nilai_linguistik" => "1",
-            "user_id" => "1",
-       ]);
-        ModelsTransaksiGuru::create([
+        TransaksiGuruSiswa::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
             "id_siswa" => "1",
-            "Nilai_linguistik" => "10",
-            "user_id" => "2",
+            "id_kriteria" => "1",
+            "nilai" => "1",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "2",
+            "id_transaksi" => "1",
+            "id_siswa" => "1",
+            "id_kriteria" => "2",
+            "nilai" => "10",
             
        ]);
-        ModelsTransaksiGuru::create([
-            "id_guru" => "3",
+        TransaksiGuruSiswa::create([
+            "id_guru" => "2",
             "id_transaksi" => "1",
             "id_siswa" => "1",
-            "Nilai_linguistik" => "22",
-            "user_id" => "3",
+            "id_kriteria" => "3",
+            "nilai" => "22",
        ]);
-        ModelsTransaksiGuru::create([
-            "id_guru" => "1",
-            "id_transaksi" => "2",
-            "id_siswa" => "2",
-            "Nilai_linguistik" => "8",
-            "user_id" => "1",
-       ]);
-        ModelsTransaksiGuru::create([
+        TransaksiGuruSiswa::create([
             "id_guru" => "2",
-            "id_transaksi" => "2",
+            "id_transaksi" => "1",
             "id_siswa" => "2",
-            "Nilai_linguistik" => "8",
-            "user_id" => "2",
+            "id_kriteria" => "1",
+            "nilai" => "8",
        ]);
-        ModelsTransaksiGuru::create([
-            "id_guru" => "3",
-            "id_transaksi" => "2",
+        TransaksiGuruSiswa::create([
+            "id_guru" => "2",
+            "id_transaksi" => "1",
             "id_siswa" => "2",
-            "Nilai_linguistik" => "4",
-            "user_id" => "3",
+            "id_kriteria" => "2",
+            "nilai" => "8",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "2",
+            "id_transaksi" => "1",
+            "id_siswa" => "2",
+            "id_kriteria" => "3",
+            "nilai" => "4",
        ]);
         
     }

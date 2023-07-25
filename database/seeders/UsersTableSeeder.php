@@ -17,20 +17,50 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
+            "name" => "Saidatul",
+            "email" => "Saidatul@gmail.com",
+            "password" => Hash::make("12345678"),
+            "is_active" => 0
+        ]);
+        User::create([
+            "name" => "Yeni",
+            "email" => "Yeni@gmail.com",
+            "password" => Hash::make("12345678"),
+            "is_active" => 0
+        ]);
+        User::create([
+            "name" => "Elies",
+            "email" => "Elies@gmail.com",
+            "password" => Hash::make("12345678"),
+            "is_active" => 0
+        ]);
+        User::create([
             "name" => "Anik",
             "email" => "Anik@gmail.com",
             "password" => Hash::make("12345678"),
             "is_active" => 0
         ]);
         User::create([
-            "name" => "Ahmad",
-            "email" => "Ahmad@gmail.com",
+            "name" => "Miftahuk",
+            "email" => "Miftahuk@gmail.com",
             "password" => Hash::make("12345678"),
             "is_active" => 0
         ]);
         User::create([
-            "name" => "Sri",
-            "email" => "Sriwahyuni@gmail.com",
+            "name" => "Edi",
+            "email" => "Edi@gmail.com",
+            "password" => Hash::make("12345678"),
+            "is_active" => 0
+        ]);
+        User::create([
+            "name" => "Miftahul",
+            "email" => "Miftahul@gmail.com",
+            "password" => Hash::make("12345678"),
+            "is_active" => 0
+        ]);
+        User::create([
+            "name" => "Eko",
+            "email" => "Eko@gmail.com",
             "password" => Hash::make("12345678"),
             "is_active" => 0
         ]);

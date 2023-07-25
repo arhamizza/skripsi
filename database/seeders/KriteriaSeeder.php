@@ -14,10 +14,13 @@ class KriteriaSeeder extends Seeder
     public function run(): void
     {
         Kriteria::create([
-            "nama_kriteria" => "C1",
+            "nama_kriteria" => "Nilai Akademik",
         ]);
         Kriteria::create([
-            "nama_kriteria" => "C2",
+            "nama_kriteria" => "Nilai Non-Akademik",
+        ]);
+        Kriteria::create([
+            "nama_kriteria" => "Sikap",
         ]);
     }
 }

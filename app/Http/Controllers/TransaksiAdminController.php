@@ -11,6 +11,7 @@ use App\Models\TransaksiGuruSiswa;
 use App\Models\TransaksiGuruu;
 use App\Models\TransaksiSiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -115,6 +116,7 @@ class TransaksiAdminController extends Controller
         $transaksi = new TransaksiGuruu();
         $transaksi->id_transaksi = $request->id_transaksi;
         $transaksi->id_guru = $request->id_guru;
+        // $transaksi->user_id = $request->id_guru;
         $id= $request->id_transaksi;
         $transaksi->save();
         return redirect('transaksigurus_edit/'.$id)
@@ -145,13 +147,13 @@ class TransaksiAdminController extends Controller
     public function deleteguru($id)
     {
         TransaksiGuruu::find($id)->delete();
-         return redirect('transaksigurus_edit/'.$id)
+         return redirect('transaksi_admin')
          ->with('success','Data transaksi successfully deleted!');
     }
     public function deletesiswa($id)
     {
         TransaksiSiswa::find($id)->delete();
-         return redirect('transaksigurus_edit/'.$id)
+         return redirect('transaksi_admin')
          ->with('success','Data transaksi successfully deleted!');
     }
     
