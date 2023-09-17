@@ -15,12 +15,15 @@ class KriteriaSeeder extends Seeder
     {
         Kriteria::create([
             "nama_kriteria" => "Nilai Akademik",
+            "bobot" => "40",
         ]);
         Kriteria::create([
             "nama_kriteria" => "Nilai Non-Akademik",
+            "bobot" => "30",
         ]);
         Kriteria::create([
-            "nama_kriteria" => "Sikap",
+            "nama_kriteria" => "Kedisiplinan",
+            "bobot" => "30",
         ]);
     }
 }

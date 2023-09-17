@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\guru;
+use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Kriteria;
 use App\Models\NilaiSiswa;

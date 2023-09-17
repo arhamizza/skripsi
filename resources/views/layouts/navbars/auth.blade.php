@@ -23,12 +23,6 @@
                     <p>{{ __('tabel') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'alternatif' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'alternatif_admin') }}">
-                    <i class="nc-icon nc-hat-3"></i>
-                    <p>{{ __('Alternatif') }}</p>
-                </a>
-            </li>
             <li class="{{ $elementActive == 'kriteria' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'kriteria_admin') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
@@ -70,7 +64,7 @@
                 <a data-toggle="collapse" aria-expanded="true" href="#transaksiguru">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
                     <p>
-                            {{ __('Transaksi') }}
+                            {{ __('Perhitungan') }}
                         <b class="caret"></b>
                     </p>
                 </a>
@@ -79,7 +73,7 @@
                         <li class="{{ $elementActive == 'transaksi' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'transaksi_admin') }}">
                                 <span class="sidebar-mini-icon">{{ __('T') }}</span>
-                                <span class="sidebar-normal">{{ __(' Transaksi ') }}</span>
+                                <span class="sidebar-normal">{{ __(' Perhitungan ') }}</span>
                             </a>
                         </li>
                     </ul>

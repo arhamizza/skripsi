@@ -49,8 +49,10 @@
                                         <input class="form-control" value="{{ $transaksi->keterangan }}" name="keterangan"
                                             type="text" placeholder="Keterangan">
                                     </div>
-                                    <center><button type="submit" class="btn btn-primary mr-2">Update</button></center>
+                                    <center><button type="submit" class="btn btn-primary mr-2">Update</button> <a href="{{ url('perhitungan')}}" class="btn btn-primary">Tambah</a></center>
+                                    
                                     <br>
+                                    
                                 </form>
 
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -71,8 +73,9 @@
                                         aria-labelledby="pills-home-tab">
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#Addtransaksi">
-                                            Add transaksi
+                                            Tambah Guru
                                         </button>
+                                        <a href="{{ url('Analisis')}}" class="btn btn-primary">Proses</a>
                                         <table class="table">
                                             <thead class="thead-dark">
                                                 <tr>
@@ -116,7 +119,7 @@
                                                     @endif
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Tambah Nama transaksi</h4>
+                                                        <h4 class="modal-title">Tambah Nama guru</h4>
                                                     </div>
 
 
@@ -181,7 +184,7 @@
                                         aria-labelledby="pills-profile-tab">
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#Addtransaksi2">
-                                        Add transaksi
+                                        Tambah Siswa
                                         </button>
                                         <table class="table">
                                             <thead class="thead-dark">
@@ -225,7 +228,7 @@
                                                     @endif
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Tambah Nama transaksi</h4>
+                                                        <h4 class="modal-title">Tambah Nama siswa</h4>
                                                     </div>
 
 

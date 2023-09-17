@@ -17,12 +17,6 @@
                     <p>{{ __('Tabel') }}</p>
                 </a>
             </li>
-            <li class="{{ $elementActive == 'alternatif' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'alternatif') }}">
-                    <i class="nc-icon nc-hat-3"></i>
-                    <p>{{ __('Alternatif') }}</p>
-                </a>
-            </li>
             <li class="{{ $elementActive == 'kriteria' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'kriteria') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
@@ -50,7 +44,7 @@
             <li class="{{ $elementActive == 'transaksiuser' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'transaksiuser') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
-                    <p>{{ __('Transaksi') }}</p>
+                    <p>{{ __('Penilaian') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">

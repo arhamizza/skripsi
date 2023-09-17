@@ -18,8 +18,13 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="">Kriteria</label>
-                                    <input type="interger" class="form-control" name="nama_kriteria" value=""
+                                    <input type="text" class="form-control" name="nama_kriteria" value=""
                                         placeholder="Masukkan kriteria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Bobot</label>
+                                    <input type="interger" class="form-control" name="bobot" value=""
+                                        placeholder="Masukkan bobot">
                                 </div>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>

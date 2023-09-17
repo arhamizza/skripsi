@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             DashboardSeeder::class,
             NilaiSeeder::class,
-            AlternatifSeeder::class,
             KriteriaSeeder::class,
             GuruSeeder::class,
             KelasSeeder::class,

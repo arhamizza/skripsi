@@ -41,6 +41,7 @@ class KriteriaController extends Controller
     {
         $kriteria = new kriteria();
         $kriteria->nama_kriteria = $request->input('nama_kriteria');
+        $kriteria->bobot = $request->input('bobot');
         $kriteria->save();
         return redirect('kriteria_admin')->with('status', "data Berhasil Ditambahkan!");
     }
@@ -55,6 +56,7 @@ class KriteriaController extends Controller
     {
         $kriteria = kriteria::find($id);
         $kriteria->nama_kriteria = $request->input('nama_kriteria');
+        $kriteria->bobot = $request->input('bobot');
         $kriteria->update();
         return redirect('kriteria_admin')->with('status',"data telah di update!");
     }

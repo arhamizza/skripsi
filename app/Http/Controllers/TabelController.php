@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\datatable;
-use App\Models\tabel;
+use App\Models\Datatable;
+use App\Models\Tabel;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;

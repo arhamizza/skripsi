@@ -34,6 +34,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Guru</th>
+                        <th>Bobot</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -44,6 +45,7 @@
                         <tr>
                             <td>{{ $no }}</td>
                             <td>{{ $sk->nama_guru }}</td>
+                            <td>{{ $sk->bobot }}</td>
                             <td>
                                 <button class="btn btn-info btn-sm" data-toggle="modal"
                                     data-target="#Editguru-{{ $sk->id }}">
@@ -86,7 +88,12 @@
                             <label>Nama Guru</label>
                             <input class="form-control" name="nama_guru" placeholder="Nama Guru">
                         </div>
+                        <div class="form-group">
+                            <label>Bobot</label>
+                            <input class="form-control" name="bobot" placeholder="Bobot">
+                        </div>
                 </div>
+                
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -116,6 +123,11 @@
                                 <label for="">Name</label>
                                 <input type="text" value="{{ $sk->nama_guru }}" class="form-control" name="nama_guru"
                                     value="" placeholder="Masukkan Nama Guru">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Bobot</label>
+                                <input type="text" value="{{ $sk->bobot }}" class="form-control" name="bobot"
+                                    value="" placeholder="Masukkan Bobot">
                             </div>
                     </div>
 

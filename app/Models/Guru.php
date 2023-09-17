@@ -10,6 +10,7 @@ class Guru extends Model
     use HasFactory;
     protected $fillable = [
         'nama_Guru',
+        'bobot',
     ];
 
     public function transaksi()

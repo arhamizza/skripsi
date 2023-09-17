@@ -18,28 +18,8 @@ class SiswaSeeder extends Seeder
             "nama_siswa" => "VENISA GLADIS SETIAWAN",
         ]);
         Siswa::create([
-            "id_kelas" => "2",
-            "nama_siswa" => "BAGUS SETYO BUDI",
-        ]);
-        Siswa::create([
             "id_kelas" => "13",
             "nama_siswa" => "ELANG SHALAHUDIN ALFARUQ",
-        ]);
-        Siswa::create([
-            "id_kelas" => "10",
-            "nama_siswa" => "GILANG SURYA SENA",
-        ]);
-        Siswa::create([
-            "id_kelas" => "11",
-            "nama_siswa" => "ADINDA LATIFATUL NAJWA",
-        ]);
-        Siswa::create([
-            "id_kelas" => "17",
-            "nama_siswa" => "DIAZ JULIA PUTRI",
-        ]);
-        Siswa::create([
-            "id_kelas" => "17",
-            "nama_siswa" => "LATIFATUL NUR AZIZAH",
         ]);
         Siswa::create([
             "id_kelas" => "17",

@@ -11,7 +11,21 @@
                         </div>
                     </div> --}}
                     <!--/.row-->
-
+		{{-- notifikasi form validasi --}}
+		@if ($errors->has('file'))
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $errors->first('file') }}</strong>
+		</span>
+		@endif
+ 
+		{{-- notifikasi sukses --}}
+		@if ($sukses = Session::get('sukses'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button> 
+			<strong>{{ $sukses }}</strong>
+		</div>
+		@endif
+        
         @if ($message = Session::get('success'))
             <div class="alert bg-success" role="alert">
                 <em class="fa fa-lg fa-check">&nbsp;</em>
@@ -25,9 +39,12 @@
             </div>
         @endif
         <div class="content">
-            <h1>DAFTAR NAMA Siswa</h1>
+            <h1>DAFTAR NAMA SISWA</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addsiswa">
                 Add Siswa
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importsiswa">
+                Import Nama Siswa
             </button>
             <table id="example" class="display nowrap" style="width:100%">
                 <thead>
@@ -111,6 +128,50 @@
         </div>
     </div>
 
+    <!-- IMPORT -->  
+    <div class="modal fade" id="importsiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form method="post" action="{{ url('siswa_import_excel') }}" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                    </div>
+                    <div class="modal-body">
+
+                        {{ csrf_field() }}
+
+                        <label>Pilih file excel</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control  @error('file') is-invalid @enderror" name="file">
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        
+                        {{-- <div class="form-group">
+                            <label>Gambar visualisasi</label>
+                            <input type="file" name="visualisasi" class="file-upload-default" required="required"> 
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" 
+                                    placeholder="Upload Gambar">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary"
+                                        type="button">Upload</button>
+                                </span>
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     @foreach ($siswa as $sk)
         <div class="modal" id="Editsiswa-{{ $sk->id }}">
             <div class="modal-dialog">
@@ -128,10 +189,10 @@
                             <div class="form-group">
                                 <label for="position-option">Pilih Kelas</label><br>
                                 <select class="form-select" name="id_kelas">
-                                    <option value>Pilih Nama Linguistik</option>
-                                    @foreach ($siswa2 as $item)
-                                        <option value="{{ $item->id }}" class="bold">{{ $item->nama_kelas }}
-                                        </option>
+                                    @foreach ($siswa2 as $kel)
+                                    <option value="{{ $kel->id }}"
+                                        {{ $kel->id == $sk->id_kelas ? 'selected' : '' }}>{{ $kel->nama_kelas}}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>

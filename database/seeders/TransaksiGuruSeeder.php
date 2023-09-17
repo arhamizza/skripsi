@@ -14,16 +14,52 @@ class TransaksiGuruSeeder extends Seeder
     public function run(): void
     {
         TransaksiGuruSiswa::create([
-            "id_guru" => "2",
+            "id_guru" => "1",
             "id_transaksi" => "1",
             "id_siswa" => "1",
             "id_kriteria" => "1",
-            "nilai" => "1",
+            "nilai" => "15",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "1",
+            "id_transaksi" => "1",
+            "id_siswa" => "2",
+            "id_kriteria" => "2",
+            "nilai" => "10",
+            
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "1",
+            "id_transaksi" => "1",
+            "id_siswa" => "3",
+            "id_kriteria" => "3",
+            "nilai" => "22",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "1",
+            "id_transaksi" => "1",
+            "id_siswa" => "4",
+            "id_kriteria" => "1",
+            "nilai" => "8",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "1",
+            "id_transaksi" => "1",
+            "id_siswa" => "5",
+            "id_kriteria" => "2",
+            "nilai" => "8",
        ]);
         TransaksiGuruSiswa::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
             "id_siswa" => "1",
+            "id_kriteria" => "1",
+            "nilai" => "15",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "2",
+            "id_transaksi" => "1",
+            "id_siswa" => "2",
             "id_kriteria" => "2",
             "nilai" => "10",
             
@@ -31,30 +67,59 @@ class TransaksiGuruSeeder extends Seeder
         TransaksiGuruSiswa::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
-            "id_siswa" => "1",
+            "id_siswa" => "3",
             "id_kriteria" => "3",
             "nilai" => "22",
        ]);
         TransaksiGuruSiswa::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
-            "id_siswa" => "2",
+            "id_siswa" => "4",
             "id_kriteria" => "1",
             "nilai" => "8",
        ]);
         TransaksiGuruSiswa::create([
             "id_guru" => "2",
             "id_transaksi" => "1",
-            "id_siswa" => "2",
+            "id_siswa" => "5",
             "id_kriteria" => "2",
             "nilai" => "8",
        ]);
         TransaksiGuruSiswa::create([
-            "id_guru" => "2",
+            "id_guru" => "3",
+            "id_transaksi" => "1",
+            "id_siswa" => "1",
+            "id_kriteria" => "1",
+            "nilai" => "15",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "3",
             "id_transaksi" => "1",
             "id_siswa" => "2",
+            "id_kriteria" => "2",
+            "nilai" => "10",
+            
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "3",
+            "id_transaksi" => "1",
+            "id_siswa" => "3",
             "id_kriteria" => "3",
-            "nilai" => "4",
+            "nilai" => "22",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "3",
+            "id_transaksi" => "1",
+            "id_siswa" => "4",
+            "id_kriteria" => "1",
+            "nilai" => "8",
+       ]);
+        TransaksiGuruSiswa::create([
+            "id_guru" => "3",
+            "id_transaksi" => "1",
+            "id_siswa" => "5",
+            "id_kriteria" => "2",
+            "nilai" => "8",
        ]);
         
     }

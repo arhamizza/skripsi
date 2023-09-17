@@ -12,6 +12,7 @@
                 <tr>
                     <th>Id</th>                    
                     <th>Nama Kriteria</th>
+                    <th>Bobot Kriteria</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                         <tr>
                             <td>{{ $id++ +1 }}</td>
                             <td>{{$kriteria->nama_kriteria}}</td>
+                            <td>{{$kriteria->bobot}}</td>
                             </td>
                             <td>
                                 

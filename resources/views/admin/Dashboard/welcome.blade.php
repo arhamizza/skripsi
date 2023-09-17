@@ -17,8 +17,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Gambar IVHF</p>
-                                <p class="card-title">{{ $data->count() }}
+                                <p class="card-category">guru</p>
+                                <p class="card-title">{{ $guru->count() }}
                                     <p>
                             </div>
                         </div>
@@ -27,7 +27,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <a href="{{ route('page.index', 'dashboard_admin') }}" class="fa fa-refresh">&nbsp;&nbsp;Klik Now</a> 
+                        <a href="{{ route('page.index', 'guru_admin') }}" class="fa fa-refresh">&nbsp;&nbsp;Klik Now</a> 
                     </div>
                 </div>
             </div>
@@ -69,8 +69,8 @@
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Data Alternatif</p>
-                                <p class="card-title">{{ $alternatif->count() }}
+                                <p class="card-category">Data Siswa</p>
+                                <p class="card-title">{{ $siswa->count() }}
                                     <p>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                 <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                        <a href="{{ route('page.index', 'alternatif_admin') }}" class="fa fa-clock-o">&nbsp;&nbsp;Klik Now</a>
+                        <a href="{{ route('page.index', 'siswa_admin') }}" class="fa fa-clock-o">&nbsp;&nbsp;Klik Now</a>
                     </div>
                 </div>
             </div>

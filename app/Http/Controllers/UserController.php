@@ -10,7 +10,7 @@ use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Kriteria;
 use App\Models\Siswa;
-use App\Models\tabel;
+use App\Models\Tabel;
 use App\Models\Transaksi;
 use App\Models\TransaksiGuruSiswa;
 use App\Models\TransaksiGuruu;
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function usertabel() 
     {
-        $tabel = tabel::all();
+        $tabel = Tabel::all();
         return view('users.index', compact('tabel'));
         // dd($tabel);
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
         $gurus = Guru::all();
         $kelas = Kelas::all();
         $kriteria = Kriteria::all();
-        $tabel = tabel::all();
+        $tabel = Tabel::all();
         // dd($transaksii);
         return view('users.usernilai',compact('gurus','transaksi','transaksii','kelas','kriteria','tabel','viewtabel','viewtabel2'));
 

@@ -30,4 +30,8 @@ class TransaksiGuruSiswa extends Model
     {
         return $this->belongsTo(Siswa::class,'id_siswa','id');
     }
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class,'id_guru','id');
+    }
 }

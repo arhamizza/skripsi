@@ -37,6 +37,7 @@ class GuruController extends Controller
 
         $validator = Validator::make($request->all(), [
             'nama_guru' => 'required|max:255',
+            'bobot' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -44,6 +45,7 @@ class GuruController extends Controller
         }
         $guru = new guru;
         $guru->nama_guru = $request->nama_guru;
+        $guru->bobot = $request->bobot;
         $guru->save();
         return redirect('guru_admin')
         ->with('success','New data guru successfully added!');

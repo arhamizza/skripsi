@@ -9,6 +9,7 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AnalisisController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiAdminController;
 use App\Http\Controllers\TransaksiGuruController;
@@ -59,13 +60,6 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::put('update-nilai/{id}', [TabelController::class, 'update']);
 	Route::get('hapus-nilai/{id}', [TabelController::class, 'destroy']);
 
-	// ------------------------ alternatif
-	Route::get('tambah-alternatif', [AlternatifController::class, 'tambah']);
-	Route::get('alternatif_admin', [AlternatifController::class, 'index']);
-	Route::post('insert-alternatif', [AlternatifController::class, 'insert']);
-	Route::get('edit-alternatif/{id}', [AlternatifController::class, 'edit']);
-	Route::put('update-alternatif/{id}', [AlternatifController::class, 'update']);
-	Route::get('hapus-alternatif/{id}', [AlternatifController::class, 'destroy']);
 	// ------------------------ Kriteria
 	Route::get('tambah-kriteria', [KriteriaController::class, 'tambah']);
 	Route::get('kriteria_admin', [KriteriaController::class, 'index']);
@@ -89,6 +83,7 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::get('/siswa_delete/{id}', [SiswaController::class, 'delete']);
 	Route::post('/siswa_add', [SiswaController::class, 'create']);
 	Route::post('/siswa_update/{id}', [SiswaController::class, 'update']);
+	Route::post('/siswa_import_excel', [SiswaController::class, 'import']);
 	// ------------------------ kelas
 	Route::get('/kelas_admin', [KelasController::class, 'index']);
 	Route::get('/kelas_delete/{id}', [KelasController::class, 'delete']);
@@ -123,6 +118,9 @@ route::middleware(['auth', 'isAdmin'])->group(function () {
 	Route::post('/transaksimodalsiswa_add', [TransaksiAdminController::class, 'siswaadd']);
 	Route::get('/transaksisiswa_delete/{id}', [TransaksiAdminController::class, 'deletesiswa']);
 	Route::get('/transaksiguru_delete/{id}', [TransaksiAdminController::class, 'deleteguru']);
+
+	// perhitungan
+	Route::resource('Analisis', AnalisisController::class);
 
 
 });

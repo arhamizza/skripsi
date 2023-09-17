@@ -14,28 +14,16 @@ class GuruSeeder extends Seeder
     public function run(): void
     {
         Guru::create([
-            "nama_guru" => "Saidatul Mar'ah S.Pd.I",
+            "nama_guru" => "Anik Yusmiarti S.Pd",
+            "bobot" => "0.5",
         ]);
         Guru::create([
             "nama_guru" => "Yeni Mustika Wijaya, S.Pd",
+            "bobot" => "0.27",
         ]);
         Guru::create([
-            "nama_guru" => "Elies Andarwati M.Pd",
-        ]);
-        Guru::create([
-            "nama_guru" => "Anik Yusmiarti S.Pd",
-        ]);
-        Guru::create([
-            "nama_guru" => "Miftahuk Muslimah M.Pd",
-        ]);
-        Guru::create([
-            "nama_guru" => "Edi Haryanto, S,Pd ",
-        ]);
-        Guru::create([
-            "nama_guru" => "Miftahul Huda S,Pd",
-        ]);
-        Guru::create([
-            "nama_guru" => "Eko Novryanto, S.Kom",
+            "nama_guru" => "Saidatul Mar'ah S.Pd.I",
+            "bobot" => "0.23",
         ]);
     }
 }

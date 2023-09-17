@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alternatif;
-use App\Models\datatable;
+use App\Models\Datatable;
+use App\Models\Guru;
 use App\Models\Kriteria;
-use App\Models\tabel;
+use App\Models\Siswa;
+use App\Models\Tabel;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class HomeController extends Controller
         $data = datatable::all();
         $tabel = tabel::all();
         $kriteria = Kriteria::all();
-        $alternatif = Alternatif::all();
-        return view('admin.dashboard.welcome', compact('data','tabel','kriteria','alternatif'));
+        $siswa = Siswa::all();
+        $guru = Guru::all();
+        return view('admin.dashboard.welcome', compact('data','tabel','kriteria','siswa','guru'));
 
     }
     
